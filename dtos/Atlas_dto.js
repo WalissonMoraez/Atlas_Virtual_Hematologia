@@ -1,8 +1,8 @@
 class Atlas_dto {
-    constructor(id, title) {
-      this.id = id;
-      this.title = title;
-    }
+  constructor() {
+    this.categorias = []; // Armazena todas as categorias do atlas
   }
+
+}
   
 module.exports = Atlas_dto;
