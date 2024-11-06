@@ -1,6 +1,7 @@
 class Quiz_models {
-    constructor(questions) {
-      this.questions = questions;
+    constructor(id, questions = []) {
+      this.id = id;
+      this.questions = questions; // Array de objetos Pergunta
     }
   }
 
@@ -9,6 +10,10 @@ class Quiz_models {
       this.textQuestion = textQuestion;
       this.response = response; // Array de strings de respostas
       this.responseCorrect = responseCorrect; // Índice da resposta correta
+    }
+
+    addQuestion(question) {
+      this.questions.push(question);
     }
   }
   
