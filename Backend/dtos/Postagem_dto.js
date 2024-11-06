@@ -1,9 +1,10 @@
+// dtos/PostagemDTO.js
 class Postagem_dto {
-  constructor(id, description, image_blade, quiz) {
-    this.id = id;;
-    this.description = description;
-    this.image_blade = image_blade;
-    this.quiz = quiz;
+  constructor(post) {
+    this.id = post.id;
+    this.image = post.image;
+    this.text = post.text;
+    this.quizId = post.quizId; // ID do Quiz, ou null se não houver um quiz associado
   }
 }
 
