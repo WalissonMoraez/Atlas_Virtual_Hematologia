@@ -1,47 +1,49 @@
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
-const { Quiz_models, Pergunta_models } = require('../models/Quiz_models');
+const Pergunta_models = require('../models/Pergunta_quiz_models');
+const Quiz_service = require('../services/Quiz_service');
 
 class Categoria_services{
   constructor() {
     this.categorias = []; // Armazena as categorias em memória
   }
 
-  // Criar uma nova categoria
-  createCategoria(name, descripton) {
-    const newCategoria = new Categoria_models(Date.now(), name, descripton);
-    this.categorias.push(newCategoria);
-    return newCategoria;
-  }
+    // Criar uma nova categoria
+    createCategoria(name, descripton) {
+      const newCategoria = new Categoria_models(Date.now(), name, descripton);
+      this.categorias.push(newCategoria);
+      return newCategoria;
+    }
 
-  // Adicionar uma nova postagem a uma categoria
-  addPostagemToCategoria(categoriaId, image, text, questions) {
-    const categoria = this.categorias.find(cat => cat.id === categoriaId);
+    // Obter todas as categorias
+      getCategorias() {
+        return this.categorias;
+      }
+
+    // Obter uma categoria específica pelo ID
+    getCategoriaById(id) {
+      return this.categorias.find(categoria => categoria.id === id);
+    }
+
+    // Adicionar uma nova postagem a uma categoria
+    addPostagemToCategoria(categoriaId, image, text, questions = []) {
+    const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error("Categoria não encontrada");
     }
 
-    // Criar o quiz a partir das perguntas
-    const quizQuestions = questions.map(perguntaData => {
-      const { textPergunta, response, responseCorrect } = perguntaData;
-      return new Pergunta_models(textPergunta, response, responseCorrect);
-    });
-    const quiz = new Quiz_models(quizQuestions);
-
-    // Criar a postagem
-    const newPostagem = new Postagem_models(Date.now(), image, text, quiz);
-    categoria.posts.push(newPostagem);
-    return newPostagem;
-  }
-
-  // Obter todas as postagens de uma categoria
-  getPostagensByCategoria(categoriaId) {
-    const categoria = this.categorias.find(cat => cat.id === categoriaId);
-    if (!categoria) {
-      throw new Error("Categoria não encontrada");
+    // Se houver perguntas, cria um quiz e obtém o ID
+    let quizId = null;
+    if (perguntas.length > 0) {
+      const newQuiz = Quiz_service.createQuiz(questions); // Cria o quiz com as perguntas
+      quizId = newQuiz.id;
     }
-    return categoria.posts;
-  }
+
+    // Cria a nova postagem e associa o quizId (se existir)
+    const newPost = new Postagem_models(Date.now(), image, text, quizId);
+    categoria.posts.push(newPost);
+    return newPost;
+    }
 }
 
 module.exports = new Categoria_services();

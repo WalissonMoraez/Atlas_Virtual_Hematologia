@@ -33,7 +33,7 @@ class Quiz_service {
     const quiz = this.getQuizById(quizId);
     const result = quiz.questions.map((question, id) => ({
       questionId: question.id,
-      correta: question.verificarResposta(responseUser[id])
+      correct: question.verificarResposta(responseUser[id])
     }));
     return result;
   }
