@@ -1,11 +1,9 @@
-// routes/Atlas_routes.js
+// routes/atlasRoutes.js
 const express = require('express');
-const atlasController = require('../controllers/Atlas_controller');
-
 const router = express.Router();
+const Atlas_controller = require('../controllers/Atlas_controller');
 
-router.post('/categoria', Atlas_controller.addCategoria); // Adicionar uma nova categoria
-router.get('/categorias', Atlas_controller.getCategorias); // Listar todas as categorias
-router.get('/categoria/:categoriaId/postagens', Atlas_controller.getPostagensByCategoria); // Listar postagens de uma categoria
+// Rota para obter todas as categorias do atlas (página inicial)
+router.get('/atlas/categorias', Atlas_controller.getCategorias);
 
 module.exports = router;

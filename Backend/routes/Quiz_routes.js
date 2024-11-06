@@ -1,11 +1,12 @@
 // routes/quizRoutes.js
 const express = require('express');
+const router = express.Router();
 const Quiz_controller = require('../controllers/Quiz_controller');
 
-const router = express.Router();
+// Rota para obter um quiz específico
+router.get('/quiz/:quizId', Quiz_controller.getQuiz);
 
-router.post('/quiz', Quiz_controller.createQuiz); // Criar um novo quiz
-router.get('/quiz/:quizId', Quiz_controller.getQuiz); // Obter um quiz pelo ID
-router.post('/quiz/:quizId/verificar', Quiz_controller.verificarRespostas); // Verificar respostas de um quiz
+// Rota para verificar as respostas de um quiz
+router.post('/quiz/:quizId/verificar', Quiz_controller.verificarRespostas);
 
 module.exports = router;
