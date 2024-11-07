@@ -9,4 +9,7 @@ router.get('/quiz/:quizId', Quiz_controller.getQuiz);
 // Rota para verificar as respostas de um quiz
 router.post('/quiz/:quizId/verificar', Quiz_controller.verificarRespostas);
 
+// Rota para criar um quiz
+router.post('/quiz', Quiz_controller.createQuiz);
+
 module.exports = router;

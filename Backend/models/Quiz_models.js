@@ -3,6 +3,10 @@ class Quiz_models {
       this.id = id;
       this.questions = questions; // Array de objetos Pergunta
     }
+
+    addQuestion(question) {
+      this.questions.push(question);
+    }
   }
 
   class Questions_models {
@@ -10,10 +14,6 @@ class Quiz_models {
       this.textQuestion = textQuestion;
       this.response = response; // Array de strings de respostas
       this.responseCorrect = responseCorrect; // Índice da resposta correta
-    }
-
-    addQuestion(question) {
-      this.questions.push(question);
     }
   }
   
