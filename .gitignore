@@ -16,7 +16,7 @@ node_modules/
 .env
 
 # Cache do npm
-frontend/package-lock.json
+Frontend/package-lock.json
 
 # IDEs
 .vscode/
