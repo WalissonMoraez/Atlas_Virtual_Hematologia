@@ -1,18 +1,18 @@
-// controllers/categoria_controlles.js
-const Atlas_service = require('../services/Atlas_service');
-const Categoria_dto = require('../dtos/Categoria_dto');
+// controllers/Categoria_controlles.js
 
-exports.getCategorias = (req, res) => {
-  const categorias = Atlas_service.getCategorias().map(categoria => new Categoria_dto(categoria));
-  res.status(200).json(categorias);
-};
+const Categoria_service = require('../services/Categoria_services');
+const Categoria_dto = require('../dtos/Categoria_dto');
 
 exports.getPostagensByCategoria = (req, res) => {
   const { categoriaId } = req.params;
   try {
-    const categoria = Atlas_service.getCategoriaById(categoriaId);
-    res.status(200).json(new Categoria_dto(categoria));
+    const categoria = Categoria_service.getCategoriaById(categoriaId);
+    if (!categoria) {
+      res.status(404).json({ message: "Categoria não encontrada" });
+    } else {
+      res.status(200).json(new Categoria_dto(categoria));
+    }
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };

@@ -1,13 +1,11 @@
 // services/Atlas_service.js
-const Atlas_models = require('../models/Atlas_models');
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
-const Quiz_models = require('../models/Quiz_models');
-const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
+const Quiz_service = require('../services/Quiz_service');
 
 class Atlas_service {
   constructor() {
-    this.atlas = new Atlas_models();
+    this.categorias = [];
   }
 
   // Adicionar uma nova categoria ao Atlas
@@ -22,6 +20,14 @@ class Atlas_service {
     return this.atlas.getCategorias();
   }
 
+  getCategoriaById(categoriaId) {
+    const categoria = this.atlas.getCategoriaById(categoriaId);
+    if (!categoria) {
+      throw new Error("Categoria não encontrada");
+    }
+    return categoria;
+  }
+
   // Obter uma categoria pelo ID e listar suas postagens
   getPostagensByCategoria(categoriaId) {
     const categoria = this.atlas.getCategoriaById(categoriaId);
@@ -33,18 +39,18 @@ class Atlas_service {
 
   // Adicionar uma nova postagem a uma categoria existente
   addPostagemToCategoria(categoriaId, image, text, questions) {
-    const categoria = this.atlas.getCategoriaById(categoriaId);
+    const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
-      throw new Error("Categoria não encontrada");
+      throw new Error('Categoria não encontrada');
     }
 
-    const quizQuestions = questions.map(questionData => {
-      const { textQuestion, response, responseCorrect } = questionData;
-      return new Pergunta_quiz_models(textQuestion, response, responseCorrect);
-    });
-    const quiz = new Quiz_models(quizQuestions);
+    let quizId = null;
+    if (questions.length > 0) {
+      const newQuiz = Quiz_service.createQuiz(questions);
+      quizId = newQuiz.id;
+    }
 
-    const newPost = new Postagem_models(Date.now(), image, text, quiz);
+    const newPost = new Postagem_models(Date.now(), image, text, quizId);
     categoria.posts.push(newPost);
     return newPost;
   }

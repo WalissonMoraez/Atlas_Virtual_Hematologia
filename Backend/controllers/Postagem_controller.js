@@ -1,20 +1,20 @@
-const Atlas_service = require('../services/Atlas_service');
+// controllers/Postagem_controlles.js
+
+const Categoria_service = require('../services/Categoria_services');
 const Postagem_dto = require('../dtos/Postagem_dto');
 
 exports.getPostagemById = (req, res) => {
   const { categoriaId, postId } = req.params;
   try {
-    const categoria = Atlas_service.getCategoriaById(categoriaId);
+    const categoria = Categoria_service.getCategoriaById(categoriaId);
     if (!categoria) {
       return res.status(404).json({ message: "Categoria não encontrada" });
     }
-
-    const post = categoria.posts.find(postz => postz.id === parseInt(postId));
-    if (!post) {
+    const postagem = categoria.posts.find(post => post.id === parseInt(postId));
+    if (!postagem) {
       return res.status(404).json({ message: "Postagem não encontrada" });
     }
-
-    res.status(200).json(new Postagem_dto(post));
+    res.status(200).json(new Postagem_dto(postagem));
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
