@@ -1,10 +1,12 @@
 // services/Atlas_service.js
+const Atlas_models = require('../models/Atlas_models');
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
 const Quiz_service = require('../services/Quiz_service');
 
 class Atlas_service {
   constructor() {
+    this.atlas = new Atlas_models();
     this.categorias = [];
   }
 
@@ -39,7 +41,7 @@ class Atlas_service {
 
   // Adicionar uma nova postagem a uma categoria existente
   addPostagemToCategoria(categoriaId, image, text, questions) {
-    const categoria = this.getCategoriaById(categoriaId);
+    const categoria = this.atlas.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error('Categoria não encontrada');
     }

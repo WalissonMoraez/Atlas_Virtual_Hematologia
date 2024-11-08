@@ -1,7 +1,7 @@
 class Categoria_models {
-    constructor(id, title, description) {
+    constructor(id, name, description) {
       this.id = id;
-      this.title = title;
+      this.name = name;
       this.description = description;
       this.posts = [];
     }
