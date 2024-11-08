@@ -1,5 +1,5 @@
 // services/quizService.js
-const Quiz_models = require('../models/Quiz_models');
+const {Quiz_models} = require('../models/Quiz_models');
 const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
 
 class Quiz_service {
@@ -10,18 +10,20 @@ class Quiz_service {
   // Criar um novo quiz e armazená-lo
   createQuiz(questionsData) {
     const newQuiz = new Quiz_models(Date.now());
+
     questionsData.forEach(questionData => {
       const { textQuestion, response, idCorrect } = questionData;
       const question = new Pergunta_quiz_models(Date.now(), textQuestion, response, idCorrect);
-      novoQuiz.addPergunta(question);
+      newQuiz.addQuestion(question);
     });
+
     this.quizzes.push(newQuiz);
     return newQuiz;
   }
 
   // Obter um quiz pelo ID
   getQuizById(quizId) {
-    const quiz = this.quizzes.find(q => q.id === quizId);
+    const quiz = this.quizzes.find(q => q.id === parseInt(quizId));
     if (!quiz) {
       throw new Error("Quiz não encontrado");
     }
@@ -31,9 +33,9 @@ class Quiz_service {
   // Verificar respostas do usuário para um quiz específico
   verificarRespostas(quizId, responseUser) {
     const quiz = this.getQuizById(quizId);
-    const result = quiz.questions.map((question, id) => ({
+    const result = quiz.questions.map((question, index) => ({
       questionId: question.id,
-      correct: question.verificarResposta(responseUser[id])
+      correct: question.verificarResposta(responseUser[index])
     }));
     return result;
   }

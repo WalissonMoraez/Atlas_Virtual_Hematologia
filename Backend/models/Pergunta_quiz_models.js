@@ -7,8 +7,8 @@ class Pergunta_quiz_models {
     }
 
     // Método para verificar se a resposta do usuário está correta
-    verificarResposta(idCorrect){
-      return this.idCorrect === idCorrect;
+    verificarResposta(reponseIndex){
+      return this.idCorrect === reponseIndex;
     }
   }
 

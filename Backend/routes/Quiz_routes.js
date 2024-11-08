@@ -4,12 +4,12 @@ const router = express.Router();
 const Quiz_controller = require('../controllers/Quiz_controller');
 
 // Rota para obter um quiz específico
-router.get('/quiz/:quizId', Quiz_controller.getQuiz);
+router.get('/:quizId', Quiz_controller.getQuiz);
 
 // Rota para verificar as respostas de um quiz
-router.post('/quiz/:quizId/verificar', Quiz_controller.verificarRespostas);
+router.post('/:quizId/verificar', Quiz_controller.verificarRespostas);
 
 // Rota para criar um quiz
-router.post('/quiz', Quiz_controller.createQuiz);
+router.post('/', Quiz_controller.createQuiz);
 
 module.exports = router;
