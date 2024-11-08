@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Aplicação dos arquivos de rotas
 app.use('/api/atlas', Atlas_routes);        // Rotas principais do atlas
-app.use('/api', Categoria_routes);     // Rotas específicas para categorias
+app.use('/api/atlas', Categoria_routes);     // Rotas específicas para categorias
 app.use('/api/atlas', Postagem_routes);      // Rotas específicas para postagens
 app.use('/api/atlas', Quiz_routes);          // Rotas específicas para quizzes
 

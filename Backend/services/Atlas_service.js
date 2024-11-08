@@ -2,7 +2,9 @@
 const Atlas_models = require('../models/Atlas_models');
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
-const Quiz_service = require('../services/Quiz_service');
+const {Quiz_models} = require('../models/Quiz_models');
+const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
+
 
 class Atlas_service {
   constructor() {
@@ -13,17 +15,17 @@ class Atlas_service {
   // Adicionar uma nova categoria ao Atlas
   addCategoria(name, description) {
     const newCategoria = new Categoria_models(Date.now(), name, description);
-    this.atlas.addCategoria(newCategoria);
+    this.categorias.push(newCategoria);
     return newCategoria;
   }
 
   // Listar todas as categorias no Atlas
   getCategorias() {
-    return this.atlas.getCategorias();
+    return this.categorias;
   }
 
   getCategoriaById(categoriaId) {
-    const categoria = this.atlas.getCategoriaById(categoriaId);
+    const categoria = this.categorias.find(cat => cat.id === parseInt(categoriaId));
     if (!categoria) {
       throw new Error("Categoria não encontrada");
     }
@@ -41,14 +43,14 @@ class Atlas_service {
 
   // Adicionar uma nova postagem a uma categoria existente
   addPostagemToCategoria(categoriaId, image, text, questions) {
-    const categoria = this.atlas.getCategoriaById(categoriaId);
+    const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error('Categoria não encontrada');
     }
 
     let quizId = null;
-    if (questions.length > 0) {
-      const newQuiz = Quiz_service.createQuiz(questions);
+    if (questions && questions.length > 0) {
+      const newQuiz = new Quiz_models(Date.now(), questions.map(q => new Pergunta_quiz_models(q.textQuestion, q.response, q.responseCorrect)));
       quizId = newQuiz.id;
     }
 
