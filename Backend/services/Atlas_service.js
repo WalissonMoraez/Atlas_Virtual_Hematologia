@@ -12,6 +12,8 @@ class Atlas_service {
     this.categorias = [];
   }
 
+  //Funcoes para utilizar o atlas
+
   // Adicionar uma nova categoria ao Atlas
   addCategoria(name, description) {
     const newCategoria = new Categoria_models(Date.now(), name, description);
@@ -31,6 +33,9 @@ class Atlas_service {
     }
     return categoria;
   }
+  
+
+  
 
   // Obter uma categoria pelo ID e listar suas postagens
   getPostagensByCategoria(categoriaId) {
@@ -42,7 +47,7 @@ class Atlas_service {
   }
 
   // Adicionar uma nova postagem a uma categoria existente
-  addPostagemToCategoria(categoriaId, image, text, questions) {
+  addPostagemToCategoria(categoriaId, images, text, questions) {
     const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error('Categoria não encontrada');
@@ -53,11 +58,31 @@ class Atlas_service {
       const newQuiz = new Quiz_models(Date.now(), questions.map(q => new Pergunta_quiz_models(q.textQuestion, q.response, q.responseCorrect)));
       quizId = newQuiz.id;
     }
-
-    const newPost = new Postagem_models(Date.now(), image, text, quizId);
+    
+    const newPost = new Postagem_models(Date.now(), images, text, quizId);
     categoria.posts.push(newPost);
     return newPost;
   }
+
+  // Alterando a imagem atual
+  changePostImage(categoriaId, postId, newIndex) {
+    const categoria = this.getCategoriaById(categoriaId);
+    if (!categoria) {
+      throw new Error("Categoria não encontrada");
+    }
+  
+    const post = categoria.posts.find(p => p.id === postId);
+    if (!post) {
+      throw new Error("Postagem não encontrada");
+    }
+  
+    try {
+      return post.changeImage(newIndex);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
 }
 
 module.exports = new Atlas_service();

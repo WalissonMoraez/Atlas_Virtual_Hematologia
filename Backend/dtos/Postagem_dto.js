@@ -5,6 +5,7 @@ class Postagem_dto {
     this.image = post.image;
     this.text = post.text;
     this.quizId = post.quizId; // ID do Quiz, ou null se não houver um quiz associado
+    this.currentImage = post.getCurrentImage(); // A imagem atual que está sendo exibida
   }
 }
 

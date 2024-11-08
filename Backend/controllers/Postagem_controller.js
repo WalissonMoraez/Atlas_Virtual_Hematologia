@@ -2,6 +2,7 @@
 
 const Categoria_service = require('../services/Categoria_services');
 const Postagem_dto = require('../dtos/Postagem_dto');
+const Atlas_service = require('../services/Atlas_service');
 
 exports.getPostagemById = (req, res) => {
   const { categoriaId, postId } = req.params;
@@ -19,3 +20,20 @@ exports.getPostagemById = (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Função para alterar a imagem de uma postagem específica
+exports.changePostImage = (req, res) => {
+  const { categoriaId, postId } = req.params;
+  const { newIndex } = req.body;
+
+  try {
+    Atlas_service.changePostImage(categoriaId, parseInt(postId), newIndex);
+    const categoria = Atlas_service.getCategoriaById(categoriaId);
+    const postagem = categoria.posts.find(post => post.id === parseInt(postId));
+    const currentImage = postagem.getCurrentImage(); // Obtém a URL da imagem atual
+    res.status(200).json({ currentImage });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+

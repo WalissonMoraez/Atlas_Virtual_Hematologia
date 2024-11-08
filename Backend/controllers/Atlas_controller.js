@@ -24,12 +24,24 @@ exports.getPostagensByCategoria = (req, res) => {
 // Função para adicionar uma nova postagem a uma categoria existente
 exports.addPostagemToCategoria = (req, res) => {
   const { categoriaId } = req.params;
-  const { image, text, questions } = req.body;
+  const { images, text, questions } = req.body;
 
   try {
-    const newPost = Atlas_service.addPostagemToCategoria(categoriaId, image, text, questions);
+    const newPost = Atlas_service.addPostagemToCategoria(categoriaId, images, text, questions);
     res.status(201).json(newPost);
   } catch (error) {
     res.status(404).json({ message: error.message });
+  }
+};
+
+exports.changePostImage = (req, res) => {
+  const { categoriaId, postId } = req.params;
+  const { newIndex } = req.body;
+
+  try {
+    const newImage = Atlas_service.changePostImage(categoriaId, parseInt(postId), newIndex);
+    res.status(200).json({ newImage });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
