@@ -34,7 +34,7 @@ class Atlas_service {
 
   // Obter uma categoria pelo ID e listar suas postagens
   getPostagensByCategoria(categoriaId) {
-    const categoria = this.atlas.getCategoriaById(categoriaId);
+    const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error("Categoria não encontrada");
     }
