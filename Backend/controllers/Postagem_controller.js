@@ -30,10 +30,10 @@ exports.changePostImage = (req, res) => {
     Atlas_service.changePostImage(categoriaId, parseInt(postId), newIndex);
     const categoria = Atlas_service.getCategoriaById(categoriaId);
     const postagem = categoria.posts.find(post => post.id === parseInt(postId));
-    const currentImage = postagem.getCurrentImage(); // Obtém a URL da imagem atual
+    const currentImage = postagem.getCurrentImage();
     res.status(200).json({ currentImage });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};
 

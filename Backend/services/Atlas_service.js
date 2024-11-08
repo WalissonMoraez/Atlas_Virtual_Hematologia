@@ -59,7 +59,7 @@ class Atlas_service {
       quizId = newQuiz.id;
     }
     
-    const newPost = new Postagem_models(Date.now(), images, text, quizId);
+    const newPost = new Postagem_models(Date.now(), text, images, quizId);
     categoria.posts.push(newPost);
     return newPost;
   }

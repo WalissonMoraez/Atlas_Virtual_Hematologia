@@ -9,13 +9,15 @@ class Postagem_models {
 
     // Método para alterar a imagem exibida
     changeImage(newIndex) {
+
       if (newIndex >= 0 && newIndex < this.images.length) {
         this.currentImageIndex = newIndex;
-        return;
+        return this.images[newIndex];
       } else {
         throw new Error("Índice de imagem inválido");
       }
     }
+    
     
 
     // Método para obter a imagem atual pelo botao
