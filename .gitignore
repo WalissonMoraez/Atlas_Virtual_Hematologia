@@ -1,0 +1,27 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Diretórios do Sistema
+.DS_Store
+
+# Dependências do Node
+node_modules/
+
+# Build de React
+/build
+
+# Ambiente
+.env
+
+# Cache do npm
+frontend/package-lock.json
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Arquivos de configuração específicos do sistema
+*.swp
