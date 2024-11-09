@@ -39,19 +39,60 @@
 
 /* Estilização geral */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f2f2f2; /* Fundo claro */
+  height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 /* Estilo da navbar */
 .navbar {
-  background-color: #003366; /* Azul escuro */
+  background: url('../src/assets/background-imagem.jpg') no-repeat center center; /* Caminho da sua imagem */
+  background-size: cover; /* Ajusta a imagem para cobrir toda a barra */
+  position: relative;
   color: white;
   padding: 1rem;
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+  z-index: 1;
+}
+
+/* Estilização do texto e logo na navbar */
+.navbar h1, .navbar img {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilo para centralizar a logo */
+.navbar img {
+  display: block;
+  margin: 0 auto 1rem auto; /* Centraliza a logo e adiciona margem inferior */
+  width: 100px; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Adicione isso ao seu arquivo App.css */
+.navbar p {
+  font-size: 1.4rem; /* Ajuste o tamanho conforme desejado */
+  margin: 0; /* Remove a margem para um ajuste mais preciso */
+  color: #ececec;
 }
 
 /* Estilo da seção principal */
@@ -106,11 +147,36 @@ body {
 
 /* Estilo do footer */
 .footer {
+  margin-top: 0;
   background-color: #003366;
   color: white;
   text-align: center;
   padding: 1rem;
-  position: fixed;
+  position: static;
   width: 100%;
   bottom: 0;
+}
+
+/* Estilização da seção "Sobre o projeto" */
+.about-section {
+  background-color: #003366; /* Azul escuro */
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+  border-radius: 0; /* Bordas retas */
+  margin-bottom: 0;
+}
+
+.about-section h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.about-section p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto; /* Centraliza o texto */
 }

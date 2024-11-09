@@ -3,6 +3,7 @@ import CategoryCard from '../components/CategoryCard';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getCategories } from '../services/api';
+import '../App.css'; // Caminho para o arquivo de estilo
 
 const HomePage = () => {
     const [categories, setCategories] = useState([]);
@@ -27,6 +28,16 @@ const HomePage = () => {
                         />
                     ))}
                 </div>
+            </div>
+            {/* Adicione a seção "Sobre o projeto" aqui */}
+            <div className="about-section">
+                <h2>Sobre o projeto</h2>
+                <p>
+                    Este projeto tem como objetivo fornecer uma plataforma interativa e informativa 
+                    para o estudo de diferentes tipos de células sanguíneas. Com base em imagens de 
+                    lâminas de sangue e descrições detalhadas, os usuários podem aprofundar seu 
+                    conhecimento em hematologia.
+                </p>
             </div>
             <Footer />
         </div>
