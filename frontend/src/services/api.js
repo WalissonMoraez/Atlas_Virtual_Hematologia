@@ -16,8 +16,8 @@ export const getCategories = async () => {
 // Função para buscar postagens de uma categoria específica
 export const getCategoryDetails = async (categoriaId) => {
     try {
-        const response = await api.get(`/atlas/categorias/${categoriaId}/posts`);
-        return response.data;
+        const response = await api.get(`/api/atlas/categorias/${categoriaId}/posts`);
+        return response.json();
     } catch (error) {
         console.error('Erro ao buscar detalhes da categoria:', error);
     }

@@ -37,6 +37,8 @@
   }
 }
 
+/*--------------------------------------- PAGINA PRINCIPAL COM CATEGORIAS --------------------------------------------------*/
+
 /* Estilização geral */
 body {
   font-family: Arial, sans-serif;
@@ -180,3 +182,71 @@ html {
   max-width: 800px;
   margin: 0 auto; /* Centraliza o texto */
 }
+
+/*---------------------------------------------- PAGINA POST ------------------------------------------------*/
+
+/* Estilização do cabeçalho da categoria */
+.category-header {
+  background-color: #003366;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Seção de estudo */
+.study-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.post-card {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.post-card:hover {
+  transform: scale(1.05);
+}
+
+.post-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Seção de quiz */
+.quiz-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.quiz-button {
+  background-color: #003366;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quiz-button:hover {
+  background-color: #0055a5;
+}
+
+.back-link {
+  display: block;
+  margin-top: 1rem;
+  color: #003366;
+  text-decoration: none;
+}
+
