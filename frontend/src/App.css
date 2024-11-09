@@ -36,3 +36,81 @@
     transform: rotate(360deg);
   }
 }
+
+/* Estilização geral */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2; /* Fundo claro */
+}
+
+/* Estilo da navbar */
+.navbar {
+  background-color: #003366; /* Azul escuro */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Estilo da seção principal */
+.home-content {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+}
+
+/* Título principal */
+.home-content h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: #003366;
+}
+
+/* Contêiner de categorias */
+.categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+/* Cartão de categoria */
+.category-card {
+  width: 250px;
+  padding: 1rem;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem das categorias */
+.category-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Título dos cartões */
+.category-card h3 {
+  margin-top: 1rem;
+  color: #003366;
+}
+
+/* Estilo do footer */
+.footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
