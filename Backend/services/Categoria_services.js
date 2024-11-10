@@ -44,6 +44,14 @@ class Categoria_services{
     categoria.posts.push(newPost);
     return newPost;
     }
+
+    getPostagensByCategoriaId = async (categoriaId) => {
+      try {
+        return await Postagem.find({ categoriaId }); // Busca as postagens pela categoriaId
+      } catch (error) {
+        throw new Error('Erro ao buscar as postagens da categoria');
+      }
+    };
 }
 
 module.exports = new Categoria_services();

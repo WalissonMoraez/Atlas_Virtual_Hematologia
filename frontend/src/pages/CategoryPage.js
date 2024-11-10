@@ -10,7 +10,10 @@ const CategoryPage = () => {
     const [categoryDetails, setCategoryDetails] = useState(null);
 
     useEffect(() => {
-        getCategoryDetails(id).then(data => setCategoryDetails(data));
+        getCategoryDetails(id).then(data => {
+            console.log(data); // Verifique aqui se 'posts' está incluído
+            setCategoryDetails(data);
+        });
     }, [id]);
 
     return (
@@ -38,6 +41,7 @@ const CategoryPage = () => {
                                 <p>Nenhuma postagem disponível.</p>
                             )}
                         </div>
+
                     </section>
 
                     <section className="quiz-section">
