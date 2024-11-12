@@ -7,53 +7,51 @@ import '../App.css';
 
 const CategoryPage = () => {
     const { id } = useParams();
-    const [categoryDetails, setCategoryDetails] = useState(null);
+    const [posts, setPosts] = useState([]); // Usando 'posts' como o estado
 
     useEffect(() => {
-        getCategoryDetails(id).then(data => {
-            console.log(data); // Verifique aqui se 'posts' está incluído
-            setCategoryDetails(data);
-        });
+        getCategoryDetails(id)
+            .then(data => {
+                console.log("Dados recebidos da API:", data); // Verifica a estrutura dos dados
+                setPosts(data); // Salva o array de posts diretamente
+            })
+            .catch(error => {
+                console.error("Erro ao buscar detalhes da categoria:", error);
+            });
     }, [id]);
 
     return (
         <div>
             <Navbar />
-            {categoryDetails ? (
-                <div className="category-content">
-                    <header className="category-header">
-                        <h1>{categoryDetails.name}</h1>
-                        <p>{categoryDetails.description}</p>
-                    </header>
+            <div className="category-content">
+                <header className="category-header">
+                    <h1>Categorias</h1>
+                    <p>Postagens para a categoria selecionada.</p>
+                </header>
 
-                    <section className="study-section">
-                        <h2>Estude as {categoryDetails.name ? categoryDetails.name.toLowerCase() : ''}</h2>
-                        <p>Células são essenciais para a manutenção da vida...</p>
-                        <div className="posts-grid">
-                            {Array.isArray(categoryDetails.posts) && categoryDetails.posts.length > 0 ? (
-                                categoryDetails.posts.map(post => (
-                                    <div key={post.id} className="post-card">
-                                        <img src={post.imageUrl} alt={post.title} />
-                                        <h3>{post.title}</h3>
-                                    </div>
-                                ))
-                            ) : (
-                                <p>Nenhuma postagem disponível.</p>
-                            )}
-                        </div>
+                <section className="study-section">
+                    <h2>Estude as postagens</h2>
+                    <p>Células são essenciais para a manutenção da vida...</p>
+                    <div className="posts-grid">
+                        {Array.isArray(posts) && posts.length > 0 ? (
+                            posts.map(post => (
+                                <div key={post.id} className="post-card">
+                                    <img src={post.images[0]} alt="Imagem da postagem" /> {/* Exibe a primeira imagem */}
+                                    <p>{post.text}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>Nenhuma postagem disponível.</p>
+                        )}
+                    </div>
+                </section>
 
-                    </section>
-
-                    <section className="quiz-section">
-                        <h2>Teste seu aprendizado</h2>
-                        <p>Adipisci consequatur est placeat...</p>
-                        <button className="quiz-button">Quiz sobre {categoryDetails.name}</button>
-                        <Link to="/" className="back-link">Voltar à página principal</Link>
-                    </section>
-                </div>
-            ) : (
-                <p>Carregando...</p>
-            )}
+                <section className="quiz-section">
+                    <h2>Teste seu aprendizado</h2>
+                    <p>Adipisci consequatur est placeat...</p>
+                    <Link to="/" className="back-link">Voltar à página principal</Link>
+                </section>
+            </div>
             <Footer />
         </div>
     );
