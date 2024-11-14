@@ -24,10 +24,10 @@ exports.getPostagensByCategoria = (req, res) => {
 // Função para adicionar uma nova postagem a uma categoria existente
 exports.addPostagemToCategoria = (req, res) => {
   const { categoriaId } = req.params;
-  const { images, text, questions } = req.body;
+  const { images, title, description, questions } = req.body;
 
   try {
-    const newPost = Atlas_service.addPostagemToCategoria(categoriaId, images, text, questions);
+    const newPost = Atlas_service.addPostagemToCategoria(categoriaId, images, title, description, questions);
     res.status(201).json(newPost);
   } catch (error) {
     res.status(404).json({ message: error.message });

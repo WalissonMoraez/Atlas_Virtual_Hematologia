@@ -1,9 +1,10 @@
 class Postagem_models {
-  constructor(id, text, images, quizId = null, categoriaId) {
+  constructor(id, images, title, description, quizId = null, categoriaId) {
     this.id = id;
-    this.text = text;
     this.images = images; // Deve ser um array de URLs
+    this.title = title;
     this.quizId = quizId; // Referência ao Quiz, se existir
+    this.description = description; // Descrição da postagem
     this.currentImageIndex = 0; // Índice da imagem atualmente exibida
     this.categoriaId = categoriaId;
   }

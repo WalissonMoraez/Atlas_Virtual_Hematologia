@@ -19,5 +19,9 @@ router.post('/categorias/:categoriaId/posts', Atlas_controller.addPostagemToCate
 // Rota para alterar a imagem de uma postagem específica
 router.post('/categorias/:categoriaId/posts/:postId/images', Postagem_controller.changePostImage);
 
+// Rota para obter uma postagem específica
+router.get('/categorias/:categoriaId/posts/:postId', Postagem_controller.getPostagemById);
+
+
 
 module.exports = router;

@@ -33,9 +33,6 @@ class Atlas_service {
     }
     return categoria;
   }
-  
-
-  
 
   // Obter uma categoria pelo ID e listar suas postagens
   getPostagensByCategoria(categoriaId) {
@@ -47,7 +44,7 @@ class Atlas_service {
   }
 
   // Adicionar uma nova postagem a uma categoria existente
-  addPostagemToCategoria(categoriaId, images, text, questions) {
+  addPostagemToCategoria(categoriaId,  title, images, description, questions) {
     const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error('Categoria não encontrada');
@@ -59,9 +56,10 @@ class Atlas_service {
       quizId = newQuiz.id;
     }
     
-    const newPost = new Postagem_models(Date.now(), text, images, quizId);
-    categoria.posts.push(newPost);
-    return newPost;
+  // Certifique-se de que description está sendo corretamente passada
+  const newPost = new Postagem_models(Date.now(), title, images, description, quizId, categoriaId);
+  categoria.posts.push(newPost);
+  return newPost;
   }
 
   // Alterando a imagem atual

@@ -54,9 +54,14 @@ html {
   padding: 0;
 }
 
+.subtitle {
+  color: #E6E6E6 !important;
+  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
 /* Estilo da navbar */
 .navbar {
-  background: url('../src/assets/background-imagem.jpg') no-repeat center center; /* Caminho da sua imagem */
+  background: url('../src/assets/background-imagem.png') no-repeat center center; /* Caminho da sua imagem */
   background-size: cover; /* Ajusta a imagem para cobrir toda a barra */
   position: relative;
   color: white;
@@ -94,7 +99,6 @@ html {
 .navbar p {
   font-size: 1.4rem; /* Ajuste o tamanho conforme desejado */
   margin: 0; /* Remove a margem para um ajuste mais preciso */
-  color: #ececec;
 }
 
 /* Estilo da seção principal */
@@ -250,3 +254,53 @@ html {
   text-decoration: none;
 }
 
+/*---------------------------------------------- PAGINA POST DETAIL ------------------------------------------------*/
+.post-detail-content {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-detail-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.image-section {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.highlight-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.highlight-options h3 {
+  margin-bottom: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.description-section {
+  background-color: #f7f7f7;
+  padding: 15px;
+  border-radius: 8px;
+}
