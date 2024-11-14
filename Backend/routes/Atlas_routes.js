@@ -25,6 +25,9 @@ router.get('/categorias/:categoriaId/posts/:postId', Postagem_controller.getPost
 // Rota para obter um quiz específico de uma postagem
 router.get('/categorias/:categoriaId/posts/:postId/quiz', Postagem_controller.getQuizByPostagem);
 
+// Rota para verificar as respostas de um quiz associado a uma postagem
+router.post('/categorias/:categoriaId/posts/:postId/quiz/verificar', Postagem_controller.verificarRespostasDoQuiz);
+
 
 
 

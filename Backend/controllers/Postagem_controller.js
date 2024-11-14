@@ -21,7 +21,6 @@ exports.getPostagemById = (req, res) => {
   }
 };
 
-
 // Função para alterar a imagem de uma postagem específica
 exports.changePostImage = (req, res) => {
   const { categoriaId, postId } = req.params;
@@ -44,6 +43,23 @@ exports.getQuizByPostagem = (req, res) => {
   try {
     const quiz = Atlas_service.getQuizByPostagemId(categoriaId, postId);
     res.status(200).json(quiz);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+exports.verificarRespostasDoQuiz = (req, res) => {
+  const { categoriaId, postId } = req.params;
+  const respostasUsuario = req.body.respostas;
+
+    // Verificar se respostasUsuario é um array
+    if (!Array.isArray(respostasUsuario)) {
+      return res.status(400).json({ message: "As respostas devem ser enviadas como um array." });
+    }
+    
+  try {
+    const resultado = Atlas_service.verificarRespostasDoQuiz(categoriaId, postId, respostasUsuario);
+    res.status(200).json(resultado);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
