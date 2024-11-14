@@ -37,7 +37,8 @@ const CategoryPage = () => {
                             posts.map(post => (
                                 <Link key={post.id} to={`/category/${categoriaId}/posts/${post.id}`}>
                                     <div className="post-card">
-                                        <p>{post.title}</p>
+                                        <img src={post.images[0]} alt="Imagem da postagem" /> {/* Exibe a primeira imagem */}
+                                        <p>{post.text}</p>
                                     </div>
                                 </Link>
                             ))

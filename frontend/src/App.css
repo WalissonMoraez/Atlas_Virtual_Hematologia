@@ -123,11 +123,23 @@ html {
   margin: 2rem 0;
 }
 
+
+
 /* Cartão de categoria */
 .category-card {
+  background-image: url('../src/assets/background-categorias&postagens.png');
+  background-size: cover; /* Faz com que a imagem cubra toda a área */
+  background-position: center;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 250px;
+  height: 150px;
   padding: 1rem;
-  background-color: #e0e0e0;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
@@ -211,11 +223,18 @@ html {
 }
 
 .post-card {
-  background-color: #e0e0e0;
-  padding: 1rem;
+  background-image: url('../src/assets/background-categorias&postagens.png');
+  background-size: cover; /* Faz com que a imagem cubra toda a área */
+  background-position: center;
   border-radius: 10px;
+  color: white;
   text-align: center;
-  transition: transform 0.3s;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px; /* Ajuste conforme necessário */
+  width: 100%; /* Ajuste conforme necessário */
 }
 
 .post-card:hover {
