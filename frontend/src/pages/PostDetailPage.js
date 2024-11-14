@@ -69,7 +69,12 @@ const PostDetailPage = () => {
                             <p className="quiz-description">
                                 Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz sobre este tema! Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!
                             </p>
-                            <button className="quiz-button">Quiz</button>
+                            <button 
+                            className="quiz-button"
+                            onClick={() => window.location.href = `/category/${categoriaId}/posts/${postId}/quiz`}
+                            >
+                                Quiz
+                            </button>
                             <Link to="/" className="back-link"><strong>VOLTAR À PÁGINA PRINCIPAL</strong></Link>
                         </section>
                     </>

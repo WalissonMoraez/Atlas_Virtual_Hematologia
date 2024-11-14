@@ -38,3 +38,15 @@ exports.changePostImage = (req, res) => {
   }
 };
 
+exports.getQuizByPostagem = (req, res) => {
+  const { categoriaId, postId } = req.params;
+
+  try {
+    const quiz = Atlas_service.getQuizByPostagemId(categoriaId, postId);
+    res.status(200).json(quiz);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+

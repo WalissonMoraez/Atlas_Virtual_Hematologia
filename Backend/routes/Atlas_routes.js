@@ -22,6 +22,10 @@ router.post('/categorias/:categoriaId/posts/:postId/images', Postagem_controller
 // Rota para obter uma postagem específica
 router.get('/categorias/:categoriaId/posts/:postId', Postagem_controller.getPostagemById);
 
+// Rota para obter um quiz específico de uma postagem
+router.get('/categorias/:categoriaId/posts/:postId/quiz', Postagem_controller.getQuizByPostagem);
+
+
 
 
 module.exports = router;
