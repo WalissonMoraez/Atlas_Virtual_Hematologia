@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getQuizDetails } from '../services/api';
 
 const QuizPage = () => {
     const { categoriaId, postId } = useParams();
-    const [quizData, setQuizData] = useState(null);
+    const [quiz, setQuiz] = useState(null);
     const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [score, setScore] = useState(0);
+    const [score, setScore] = useState(null);
 
     // Carrega os detalhes do quiz
     useEffect(() => {
         const fetchQuizDetails = async () => {
             try {
                 const data = await getQuizDetails(categoriaId, postId);
-                setQuizData(data);
+                setQuiz(data);
             } catch (error) {
                 console.error("Erro ao buscar detalhes do quiz:", error);
             }
@@ -22,58 +21,60 @@ const QuizPage = () => {
         fetchQuizDetails();
     }, [categoriaId, postId]);
 
-
     // Lida com a seleção de uma resposta
-    const handleAnswerChange = (questionId, selectedIndex) => {
+    const handleAnswerChange = (questionIndex, altIndex) => {
         setSelectedAnswers({
             ...selectedAnswers,
-            [questionId]: selectedIndex,
+            [questionIndex]: altIndex,
         });
     };
 
-    // Submete o quiz e calcula a pontuação
-    const handleSubmit = () => {
-        let totalScore = 0;
-        quizData.questions.forEach((question) => {
-            if (selectedAnswers[question.id] === question.idCorrect) {
-                totalScore += 1;
+    // Confirma as respostas e calcula o total de acertos
+    const handleConfirmAnswers = () => {
+        let correctAnswers = 0;
+        quiz.questions.forEach((question, index) => {
+            if (selectedAnswers[index] === question.idCorrect) {
+                correctAnswers++;
             }
         });
-        setScore(totalScore);
-        setIsSubmitted(true);
+        setScore(correctAnswers);
     };
 
     return (
         <div>
-            <h2>Quiz</h2>
-
-            {quizData && quizData.questions.map((question, questionIndex) => (
-                <div key={`question-${questionIndex}`} className="question-card">
-                    <h3>Questão {questionIndex + 1}</h3>
-                    <p>{question.text}</p>
-                    <div className="options">
-                        {question.alternative.map((option, index) => (
-                            <label key={`alt-${questionIndex}-${index}`}>
-                                <input
-                                    type="radio"
-                                    name={`question-${questionIndex}`}
-                                    checked={selectedAnswers[question.id] === index}
-                                    onChange={() => handleAnswerChange(question.id, index)}
-                                    disabled={isSubmitted}
-                                />
-                                {option}
-                            </label>
-                        ))}
+            <h1>Quiz</h1>
+            {quiz ? (
+                quiz.questions.map((question, questionIndex) => (
+                    <div key={`question-${questionIndex}`} className="question-card">
+                        <h2>Questão {questionIndex + 1}</h2>
+                        <p>{question.text}</p>
+                        <div className="alternatives">
+                            {question.alternative.map((alt, altIndex) => (
+                                <label key={`alt-${questionIndex}-${altIndex}`}>
+                                    <input
+                                        type="radio"
+                                        name={`question-${questionIndex}`}
+                                        onChange={() => handleAnswerChange(questionIndex, altIndex)}
+                                        checked={selectedAnswers[questionIndex] === altIndex}
+                                    />
+                                    {alt}
+                                </label>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
-
-            {!isSubmitted ? (
-                <button onClick={handleSubmit}>Confirmar</button>
+                ))
             ) : (
-                <div className="score">
-                    <h3>Sua pontuação: {score} de {quizData.questions.length}</h3>
-                </div>
+                <p>Carregando...</p>
+            )}
+
+            {/* Botão para confirmar as respostas */}
+            <button onClick={handleConfirmAnswers}>Confirmar</button>
+
+            {/* Mostra o total de acertos após a confirmação */}
+            {score !== null && (
+                <p>
+                    Você acertou {score} de {quiz.questions.length} questões.
+                </p>
             )}
         </div>
     );
