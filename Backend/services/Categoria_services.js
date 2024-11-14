@@ -1,6 +1,5 @@
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
-const Pergunta_models = require('../models/Pergunta_quiz_models');
 const Quiz_service = require('../services/Quiz_service');
 
 class Categoria_services{

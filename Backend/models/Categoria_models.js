@@ -5,6 +5,11 @@ class Categoria_models {
       this.description = description;
       this.posts = [];
     }
+
+    addPost(post) {
+      this.posts.push(post);
+    }
+    
   }
   
 module.exports = Categoria_models;

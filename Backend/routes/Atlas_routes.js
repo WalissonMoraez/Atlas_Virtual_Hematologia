@@ -29,6 +29,4 @@ router.get('/categorias/:categoriaId/posts/:postId/quiz', Postagem_controller.ge
 router.post('/categorias/:categoriaId/posts/:postId/quiz/verificar', Postagem_controller.verificarRespostasDoQuiz);
 
 
-
-
 module.exports = router;

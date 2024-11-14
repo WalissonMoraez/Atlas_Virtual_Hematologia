@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ufjLogo from '../assets/LogoUFJ.png'; // Importe a logo da UFJ
 import { getQuizDetails } from '../services/api';
+import Footer from '../components/Footer';
+import '../App.css'; 
 
 const QuizPage = () => {
     const { categoriaId, postId } = useParams();
@@ -41,16 +44,24 @@ const QuizPage = () => {
     };
 
     return (
-        <div>
-            <h1>Quiz</h1>
+        <div className='quiz-cotainer'>
+            {/* Header com Navbar e Título */}
+            <header className="quiz-header">
+                <nav className="navbar">
+                    <img src={ufjLogo} alt="UFJ Logo" />
+                        <h1>post.title</h1>            
+                </nav>
+            </header>
+
+            <h1 className='quiz-title'>Quiz</h1>
             {quiz ? (
                 quiz.questions.map((question, questionIndex) => (
                     <div key={`question-${questionIndex}`} className="question-card">
-                        <h2>Questão {questionIndex + 1}</h2>
-                        <p>{question.text}</p>
-                        <div className="alternatives">
+                        <h2 className='question-title'>Questão {questionIndex + 1}</h2>
+                        <p className='question-text'>{question.text}</p>
+                        <div className="options-container">
                             {question.alternative.map((alt, altIndex) => (
-                                <label key={`alt-${questionIndex}-${altIndex}`}>
+                                <label key={`alt-${questionIndex}-${altIndex}`} className="option-label">
                                     <input
                                         type="radio"
                                         name={`question-${questionIndex}`}
@@ -68,14 +79,15 @@ const QuizPage = () => {
             )}
 
             {/* Botão para confirmar as respostas */}
-            <button onClick={handleConfirmAnswers}>Confirmar</button>
+            <button onClick={handleConfirmAnswers} className='confirm-button'>Confirmar</button>
 
             {/* Mostra o total de acertos após a confirmação */}
             {score !== null && (
-                <p>
+                <p className='score-text'>
                     Você acertou {score} de {quiz.questions.length} questões.
                 </p>
             )}
+            <Footer />
         </div>
     );
 };

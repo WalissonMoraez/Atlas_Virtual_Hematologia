@@ -1,8 +1,9 @@
 // services/Atlas_service.js
+
 const Atlas_models = require('../models/Atlas_models');
 const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
-const {Quiz_models} = require('../models/Quiz_models');
+const Quiz_models = require('../models/Quiz_models');
 const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
 
 
@@ -13,8 +14,10 @@ class Atlas_service {
     this.quizzes = [];
   }
 
-  //Funcoes para utilizar o atlas
+//------------------------------------------------ Objetos --------------------------------------------------------------
 
+
+//------------------------------------------------Funcoes para utilizar o atlas ------------------------------------------------
   // Adicionar uma nova categoria ao Atlas
   addCategoria(name, description) {
     const newCategoria = new Categoria_models(Date.now(), name, description);
@@ -82,7 +85,7 @@ class Atlas_service {
 
   getQuizByPostagemId(categoriaId, postId) {
     
-    const categoria = this.getCategoriaById(categoriaId);
+    const categoria = this.categorias.find(cat => cat.id === parseInt(categoriaId));
     const postagem = categoria.posts.find(post => post.id === parseInt(postId));
     const quiz = this.quizzes ? this.quizzes.find(q => q.id === postagem.quizId) : null; // Buscar o quiz associado
 

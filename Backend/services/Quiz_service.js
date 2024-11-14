@@ -1,5 +1,5 @@
 // services/quizService.js
-const {Quiz_models} = require('../models/Quiz_models');
+const Quiz_models = require('../models/Quiz_models');
 const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
 
 class Quiz_service {
