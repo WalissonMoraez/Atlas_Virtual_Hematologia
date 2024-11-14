@@ -47,7 +47,7 @@ export const getQuiz = async (quizId) => {
 
 export const getQuizDetails = async (categoriaId, postId) => {
     try {
-        const response = await axios.get(`api/atlas/categorias/${categoriaId}/posts/${postId}/quiz`);
+        const response = await axios.get(`http://localhost:3000/api/atlas/categorias/${categoriaId}/posts/${postId}/quiz`);
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar detalhes do quiz:', error);

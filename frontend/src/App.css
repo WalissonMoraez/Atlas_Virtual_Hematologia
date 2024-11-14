@@ -396,3 +396,38 @@ html {
 .back-link:hover {
   text-decoration: underline;
 }
+
+/*---------------------------------------------- PAGINA QUIZ DETAIL ------------------------------------------------*/
+
+.question-card {
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.options label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+button {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ddd;
+}
+
+.score {
+  margin-top: 1em;
+  font-size: 1.2em;
+  color: #333;
+}
