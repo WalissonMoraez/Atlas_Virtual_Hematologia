@@ -31,6 +31,7 @@ export const getPostDetails = async (categoriaId, postId) => {
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar detalhes da postagem:', error);
+        throw error;
     }
 };
 
