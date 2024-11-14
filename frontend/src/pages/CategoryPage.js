@@ -48,7 +48,8 @@ const CategoryPage = () => {
 
                 <section className="quiz-section">
                     <h2>Teste seu aprendizado</h2>
-                    <p>Adipisci consequatur est placeat...</p>
+                    <p>Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz 
+                        sobre <strong>{getCategoryDetails.name}</strong> Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!</p>
                     <Link to="/" className="back-link">Voltar à página principal</Link>
                 </section>
             </div>
