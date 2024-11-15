@@ -13,17 +13,6 @@ export const getCategories = async () => {
     }
 };
 
-// Função para buscar postagens de uma categoria específica usando Axios
-export const getCategoryDetails = async (id) => {
-    try {
-        const response = await axios.get(`http://localhost:3000/api/atlas/categorias/${id}/posts`);
-        return response.data; // Retorna os dados diretamente como um array de posts
-    } catch (error) {
-        console.error('Erro ao buscar detalhes da categoria:', error);
-        return [];
-    }
-};
-
 // Função para obter uma postagem específica
 export const getPostDetails = async (categoriaId, postId) => {
     try {
@@ -51,6 +40,16 @@ export const getQuizDetails = async (categoriaId, postId) => {
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar detalhes do quiz:', error);
+        throw error;
+    }
+};
+
+export const getCategoryDetails = async (categoriaId) => {
+    try {
+        const response = await axios.get(`http://localhost:3000/api/atlas/categorias/${categoriaId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao buscar detalhes da categoria:", error);
         throw error;
     }
 };

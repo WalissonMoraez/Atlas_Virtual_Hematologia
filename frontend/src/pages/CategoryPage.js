@@ -1,57 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Footer from '../components/Footer';
+import PostCard from '../components/PostCard';
 import { getCategoryDetails } from '../services/api';
 import '../App.css';
 
 const CategoryPage = () => {
-    
-    const { id: categoriaId} = useParams();
-    const [posts, setPosts] = useState([]); // Usando 'posts' como o estado
-    const [categoryTitle, setCategoryTitle] = useState(''); // Estado para o título da categoria
-    const [categoryDescription, setCategoryDescription] = useState(''); // Estado para a descrição da categoria
+    const { id: categoriaId } = useParams();
+    const [categoryDetails, setCategoryDetails] = useState({ title: '', description: '', posts: [] });
 
     useEffect(() => {
-        getCategoryDetails(categoriaId)
-            .then(data => {
-                console.log("Dados recebidos da API:", data); // Verifica a estrutura dos dados
+        const fetchCategoryDetails = async () => {
+            try {
+                const data = await getCategoryDetails(categoriaId);
+                console.log("Dados recebidos da API:", data); // Verifique a estrutura dos dados no console
                 if (data) {
-                    setCategoryTitle(data.title || ''); // Armazena o título da categoria
-                    setCategoryDescription(data.description || ''); // Armazena a descrição da categoria
-                    setPosts(data.posts || []); // Armazena as postagens da categoria, se existirem
+                    setCategoryDetails({
+                        name: data.name || 'Título não disponível',
+                        description: data.description || 'Descrição não disponível',
+                        posts: data.posts || []
+                    });
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error("Erro ao buscar detalhes da categoria:", error);
-            });
+            }
+        };
+
+        fetchCategoryDetails();
     }, [categoriaId]);
 
     return (
         <div>
             <div className="category-content">
                 <nav className='category-header'>
-                    <h1>{categoryTitle || "Título não disponível"}</h1>
-                    <p>{categoryDescription || "Descrição não disponível"}</p>
+                    <h1>{categoryDetails.name}</h1>
+                    <p>{categoryDetails.description}</p>
                 </nav>
 
                 <section className="study-section">
                     <h2>Estude as postagens</h2>
-                    <p>Células são essenciais para a manutenção da vida...</p>
+                    <p>Células são essenciais para a manutenção da vida, pois garantem que os tecidos do corpo recebam o oxigênio necessário para suas funções metabólicas.</p>
                     <div className="posts-grid">
-                        {Array.isArray(posts) && posts.length > 0 ? (
-                            posts.map(post => (
-                                <Link key={post.id} to={`/category/${categoriaId}/posts/${post.id}`}>
-                                    <div className="post-card">
-                                        <h3>{post.title}</h3>
-                                    </div>
-                                </Link>
+                        {Array.isArray(categoryDetails.posts) && categoryDetails.posts.length > 0 ? (
+                            categoryDetails.posts.map(post => (
+                                <PostCard key={post.id} post={post} categoriaId={categoriaId} />
                             ))
                         ) : (
                             <p>Nenhuma postagem disponível.</p>
                         )}
                     </div>
                 </section>
-
             </div>
             <Footer />
         </div>

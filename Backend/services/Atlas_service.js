@@ -67,10 +67,13 @@ class Atlas_service {
   }
 
   getCategoriaById(categoriaId) {
+    console.log(`Procurando categoria com ID: ${categoriaId}`);
     const categoria = this.categorias.find(cat => cat.id === parseInt(categoriaId));
     if (!categoria) {
-      throw new Error("Categoria não encontrada");
+      console.error('Categoria não encontrada');
+      throw new Error('Categoria não encontrada');
     }
+    console.log('Categoria encontrada:', categoria);
     return categoria;
   }
 
