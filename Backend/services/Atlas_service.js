@@ -106,6 +106,8 @@ class Atlas_service {
     return quiz;
   }
 
+  
+
   // Alterando a imagem atual
   changePostImage(categoriaId, postId, newIndex) {
     const categoria = this.getCategoriaById(categoriaId);

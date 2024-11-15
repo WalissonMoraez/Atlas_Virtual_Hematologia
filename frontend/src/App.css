@@ -55,7 +55,7 @@ html {
 }
 
 .subtitle {
-  color: #E6E6E6 !important;
+  color: #E6E6E6;
   font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
 }
 
@@ -64,7 +64,6 @@ html {
   background: url('../src/assets/background-imagem.png') no-repeat center center; /* Caminho da sua imagem */
   background-size: cover; /* Ajusta a imagem para cobrir toda a barra */
   position: relative;
-  color: white;
   padding: 1rem;
   text-align: center;
   font-size: 1.5rem;
@@ -78,7 +77,6 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
   z-index: 1;
 }
 
@@ -86,10 +84,13 @@ html {
 .navbar h1, .navbar img {
   position: relative;
   z-index: 2;
+  margin-bottom: 10px;
+  color: white;
 }
 
 /* Estilo para centralizar a logo */
 .navbar img {
+  margin-bottom: 15px;
   display: block;
   margin: 0 auto 1rem auto; /* Centraliza a logo e adiciona margem inferior */
   width: 100px; /* Ajuste o tamanho conforme necessário */
@@ -97,7 +98,10 @@ html {
 
 /* Adicione isso ao seu arquivo App.css */
 .navbar p {
-  font-size: 1.4rem; /* Ajuste o tamanho conforme desejado */
+  color: #dfdfdf;
+  font-size: 18px; /* Ajuste o tamanho conforme desejado */
+  margin-top: 12px;
+  margin-bottom: 15px;
   margin: 0; /* Remove a margem para um ajuste mais preciso */
 }
 
@@ -124,6 +128,37 @@ html {
 }
 
 
+/* Estilo da seção de categorias */
+.categories-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.categories-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.categories-section p {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: #444444;
+}
+
+
+/* Grid das categorias */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
 
 /* Cartão de categoria */
 .category-card {
@@ -144,23 +179,26 @@ html {
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .category-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagem das categorias */
 .category-card img {
   width: 100%;
-  border-radius: 10px;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* Título dos cartões */
 .category-card h3 {
-  margin-top: 1rem;
-  color: #003366;
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 15px;
 }
 
 /* Estilo do footer */
@@ -177,7 +215,7 @@ html {
 
 /* Estilização da seção "Sobre o projeto" */
 .about-section {
-  background-color: #003366; /* Azul escuro */
+  background-color: #08439A; /* Azul escuro */
   color: white;
   padding: 2rem;
   text-align: center;

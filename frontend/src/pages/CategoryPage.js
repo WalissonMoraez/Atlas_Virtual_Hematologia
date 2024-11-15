@@ -8,13 +8,18 @@ const CategoryPage = () => {
     
     const { id: categoriaId} = useParams();
     const [posts, setPosts] = useState([]); // Usando 'posts' como o estado
-
+    const [categoryTitle, setCategoryTitle] = useState(''); // Estado para o título da categoria
+    const [categoryDescription, setCategoryDescription] = useState(''); // Estado para a descrição da categoria
 
     useEffect(() => {
         getCategoryDetails(categoriaId)
             .then(data => {
                 console.log("Dados recebidos da API:", data); // Verifica a estrutura dos dados
-                setPosts(data); // Salva o array de posts diretamente
+                if (data) {
+                    setCategoryTitle(data.title || ''); // Armazena o título da categoria
+                    setCategoryDescription(data.description || ''); // Armazena a descrição da categoria
+                    setPosts(data.posts || []); // Armazena as postagens da categoria, se existirem
+                }
             })
             .catch(error => {
                 console.error("Erro ao buscar detalhes da categoria:", error);
@@ -24,10 +29,10 @@ const CategoryPage = () => {
     return (
         <div>
             <div className="category-content">
-                <header className="category-header">
-                    <h1>{categoriaId.title}</h1>
-                    <p>{getCategoryDetails.description}</p>
-                </header>
+                <nav className='category-header'>
+                    <h1>{categoryTitle || "Título não disponível"}</h1>
+                    <p>{categoryDescription || "Descrição não disponível"}</p>
+                </nav>
 
                 <section className="study-section">
                     <h2>Estude as postagens</h2>
@@ -37,8 +42,7 @@ const CategoryPage = () => {
                             posts.map(post => (
                                 <Link key={post.id} to={`/category/${categoriaId}/posts/${post.id}`}>
                                     <div className="post-card">
-                                        <img src={post.images[0]} alt="Imagem da postagem" /> {/* Exibe a primeira imagem */}
-                                        <p>{post.text}</p>
+                                        <h3>{post.title}</h3>
                                     </div>
                                 </Link>
                             ))

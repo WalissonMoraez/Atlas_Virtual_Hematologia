@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ufjLogo from '../assets/LogoUFJ.png'; // Importe a logo da UFJ
-import { getQuizDetails } from '../services/api';
+import { getQuizDetails, getPostDetails } from '../services/api';
 import Footer from '../components/Footer';
 import '../App.css'; 
 
 const QuizPage = () => {
     const { categoriaId, postId } = useParams();
     const [quiz, setQuiz] = useState(null);
+    const [postDetails, setPostDetails] = useState(null); // Estado para armazenar os detalhes da postagem
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [score, setScore] = useState(null);
 
@@ -22,6 +23,19 @@ const QuizPage = () => {
             }
         };
         fetchQuizDetails();
+    }, [categoriaId, postId]);
+
+    // Carrega os detalhes da postagem
+    useEffect(() => {
+        const fetchPostDetails = async () => {
+            try {
+                const postData = await getPostDetails(categoriaId, postId);
+                setPostDetails(postData);
+            } catch (error) {
+                console.error("Erro ao buscar detalhes da postagem:", error);
+            }
+        };
+        fetchPostDetails();
     }, [categoriaId, postId]);
 
     // Lida com a seleção de uma resposta
@@ -46,14 +60,14 @@ const QuizPage = () => {
     return (
         <div className='quiz-cotainer'>
             {/* Header com Navbar e Título */}
-            <header className="quiz-header">
+            <header>
                 <nav className="navbar">
                     <img src={ufjLogo} alt="UFJ Logo" />
-                        <h1>post.title</h1>            
+                        <h1>{postDetails ? postDetails.title : "Carregando título..."}</h1>            
                 </nav>
             </header>
 
-            <h1 className='quiz-title'>Quiz</h1>
+            <h1 className='quiz-title'>Teste seu conhecimento</h1>
             {quiz ? (
                 quiz.questions.map((question, questionIndex) => (
                     <div key={`question-${questionIndex}`} className="question-card">
