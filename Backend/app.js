@@ -9,6 +9,7 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
+app.use('/public', express.static('public'));
 
 // Aplicação dos arquivos de rotas
 app.use('/api/atlas', Atlas_routes);        // Rotas principais do atlas

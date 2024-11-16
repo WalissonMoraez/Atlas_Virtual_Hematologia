@@ -9,8 +9,15 @@ const HomePage = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // Busca as categorias do backend
-        getCategories().then(data => setCategories(data));
+        // Corrigido para chamar getCategories como função
+        getCategories()
+            .then(response => {
+                setCategories(response);
+            })
+            .catch(error => {
+                console.error("Erro ao buscar categorias:", error);
+                setCategories([]); // Evita que seja undefined
+            });
     }, []);
 
     return (

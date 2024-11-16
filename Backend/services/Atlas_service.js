@@ -12,9 +12,27 @@ class Atlas_service {
     this.atlas = new Atlas_models();
     this.categorias = [];
     this.quizzes = [];
+    this.initializeData();
   }
 
 //------------------------------------------------ Objetos --------------------------------------------------------------
+
+initializeData() {
+  // Criação de uma categoria inicial com uma postagem e quiz
+  const categoria1 = new Categoria_models(Date.now()+1, "Hemácias", "Células do sangue responsáveis pelo transporte de oxigênio dos pulmões para os tecidos do corpo e pela condução de dióxido de carbono dos tecidos de volta aos pulmões para ser eliminado. Elas contêm uma proteína chamada hemoglobina, que se liga ao oxigênio e ao dióxido de carbono, facilitando esse transporte.");
+  const perguntasQuiz = [
+    new Pergunta_quiz_models(Date.now()+2, 'Qual a cor do céu?', ['Azul', 'Verde', 'Amarelo', 'Vermelho'], 0),
+    new Pergunta_quiz_models(Date.now()+3, 'Qual é o resultado de 2 + 2?', ['3', '4', '5', '6'], 1)
+  ];
+  const quiz1 = new Quiz_models(Date.now()+4, perguntasQuiz);
+  this.addQuiz(quiz1);
+  const postagem1 = new Postagem_models(Date.now()+5, [
+    '/public/images/hemacias/hemacia0.jpg',
+    '/public/images/hemacias/hemacia1.jpg'
+  ], 'Hemácias Crenadas', 'Hemácias que sofrem plasmólise, ou seja, perdem água de forma excessiva, resultando em murchamento e danos reversíveis à célula', quiz1.id, categoria1.id);
+  categoria1.addPost(postagem1);
+  this.categorias.push(categoria1);
+}
 
 
 //------------------------------------------------Funcoes para utilizar o atlas ------------------------------------------------
@@ -67,13 +85,11 @@ class Atlas_service {
   }
 
   getCategoriaById(categoriaId) {
-    console.log(`Procurando categoria com ID: ${categoriaId}`);
     const categoria = this.categorias.find(cat => cat.id === parseInt(categoriaId));
     if (!categoria) {
       console.error('Categoria não encontrada');
       throw new Error('Categoria não encontrada');
     }
-    console.log('Categoria encontrada:', categoria);
     return categoria;
   }
 
