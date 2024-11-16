@@ -8,7 +8,7 @@ import '../App.css';
 const PostDetailPage = () => {
     const { categoriaId, postId } = useParams(); // Obtém categoriaId e postId da URL
     const [post, setPost] = useState(null); // Estado para armazenar os dados da postagem
-    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Estado para controlar a imagem atual exibida
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Índice da imagem atual
 
     // Função para buscar os detalhes da postagem
     useEffect(() => {
@@ -24,8 +24,15 @@ const PostDetailPage = () => {
         fetchPostDetails();
     }, [categoriaId, postId]);
 
-    const handleImageChange = (index) => {
-        setCurrentImageIndex(index);
+    // Função para lidar com a seleção das opções
+    const handleOptionChange = (index) => {
+        if (currentImageIndex === index) {
+            // Se desmarcar, volta para a imagem principal (índice 0)
+            setCurrentImageIndex(0);
+        } else {
+            // Atualiza para a imagem selecionada
+            setCurrentImageIndex(index);
+        }
     };
 
     return (
@@ -35,27 +42,32 @@ const PostDetailPage = () => {
                 {post ? (
                     <>
                         <div className="post-detail-main">
-                            <div className="image-section">
-                                <img
-                                    src={`http://localhost:3000${post.images[currentImageIndex]}`}
-                                    alt={`Imagem ${currentImageIndex + 1} da Postagem`}
-                                    className="post-image"
-                                />
-                                <div className="image-buttons">
-                                    {post.images.map((_, index) => (
-                                        index !== currentImageIndex && (
-                                            <button
-                                                key={`button-${index}`}
-                                                onClick={() => handleImageChange(index)}
-                                                className="image-button"
-                                            >
-                                                {`Imagem ${index + 1}`}
-                                            </button>
-                                        )
-                                    ))}
-                                </div>
+                        {/* Contêiner principal que organiza a imagem e as opções */}
+                        <div className="image-selector-container">
+                            {/* Imagem principal */}
+                            <img
+                                src={`http://localhost:3000${post.images[currentImageIndex]}`}
+                                alt="Imagem da Postagem"
+                                className="post-image"
+                            />
+
+                            {/* Opções de seleção */}
+                            <div className="selector-options">
+                                {post.images.slice(1).map((_, index) => (
+                                    <label key={index} className="option-label">
+                                        <input
+                                            type="checkbox"
+                                            name="imageSelector"
+                                            value={index + 1}
+                                            checked={currentImageIndex === index + 1}
+                                            onChange={() => handleOptionChange(index + 1)}
+                                        />
+                                        IMAGEM {index + 1}
+                                    </label>
+                                ))}
                             </div>
                         </div>
+                    </div>
 
                         <div className="description-section">
                             <h3>Descrição</h3>

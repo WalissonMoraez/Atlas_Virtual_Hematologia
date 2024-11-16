@@ -385,33 +385,76 @@ html {
   margin-right: 20px;
 }
 
+.image-selector-container {
+  display: flex;
+  justify-content: space-between; /* Deixa os itens (imagem e seletores) alinhados horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  max-width: 800px; /* Limita a largura do contêiner */
+  margin: 0 auto; /* Centraliza o contêiner na página */
+}
+
 .post-image {
-  width: 60%;
-  border-radius: 8px;
+  width: 65%; /* Define a largura da imagem */
+  border-radius: 10px; /* Bordas arredondadas */
   margin-bottom: 25px;
   margin-top: 10px;
 }
 
-.highlight-options {
-  flex: 1;
+.selector-options {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: column; /* Coloca os itens em uma coluna */
+  background-color: #e6e6e6; /* Cor de fundo */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  gap: 10px; /* Espaçamento entre os itens */
+  width: 25%; /* Define a largura */
 }
 
-.highlight-options h3 {
-  margin-bottom: 10px;
+.selector-options label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  background-color: #d3d3d3; /* Fundo dos itens */
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.selector-options label:hover {
+  background-color: #c0c0c0; /* Cor de fundo ao passar o mouse */
+}
+
+.selector-options input[type="radio"] {
+  margin-right: 10px; /* Espaço entre o botão e o texto */
+}
+
+.highlight-options {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .checkbox-group {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .highlight-label {
-  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
   font-size: 14px;
+  cursor: pointer;
 }
+
+.highlight-label input {
+  margin-right: 10px;
+}
+
 
 .description-section {
   background-color: #e0e0e0; /* Cor de fundo cinza */

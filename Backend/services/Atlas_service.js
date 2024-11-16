@@ -28,6 +28,7 @@ initializeData() {
   this.addQuiz(quiz1);
   const postagem1 = new Postagem_models(Date.now()+5, [
     '/public/images/hemacias/hemacia0.jpg',
+    '/public/images/hemacias/hemacia1.jpg',
     '/public/images/hemacias/hemacia1.jpg'
   ], 'Hemácias Crenadas', 'Hemácias que sofrem plasmólise, ou seja, perdem água de forma excessiva, resultando em murchamento e danos reversíveis à célula', quiz1.id, categoria1.id);
   categoria1.addPost(postagem1);
