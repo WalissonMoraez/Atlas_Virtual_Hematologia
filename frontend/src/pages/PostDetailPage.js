@@ -8,7 +8,7 @@ import '../App.css';
 const PostDetailPage = () => {
     const { categoriaId, postId } = useParams(); // Obtém categoriaId e postId da URL
     const [post, setPost] = useState(null); // Estado para armazenar os dados da postagem
-    const [selectedHighlight, setSelectedHighlight] = useState(null); // Estado para controlar o destaque selecionado
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Estado para controlar a imagem atual exibida
 
     // Função para buscar os detalhes da postagem
     useEffect(() => {
@@ -24,35 +24,34 @@ const PostDetailPage = () => {
         fetchPostDetails();
     }, [categoriaId, postId]);
 
-    // Função para controlar a seleção de destaque (permitindo apenas uma seleção)
-    const handleHighlightChange = (index) => {
-        setSelectedHighlight(index);
+    const handleImageChange = (index) => {
+        setCurrentImageIndex(index);
     };
-    
+
     return (
         <div>
-            <Navbar2 title='ARRUMAR AQUI' />
+            {post && <Navbar2 title={post.title} />}
             <div className="post-detail-content">
                 {post ? (
                     <>
-                        <h1>{post.title}</h1>
-
                         <div className="post-detail-main">
                             <div className="image-section">
-                                <img src={post.images[post.currentImageIndex]} alt="Imagem da Postagem" className="post-image" />
-                            </div>
-                            <div className="highlight-options">
-                                <h3>Destacar na Imagem</h3>
-                                <div className="checkbox-group">
-                                    {post.highlights?.map((highlight, index) => (
-                                        <label key={index} className="highlight-label">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedHighlight === index}
-                                                onChange={() => handleHighlightChange(index)}
-                                            />
-                                            {highlight}
-                                        </label>
+                                <img
+                                    src={`http://localhost:3000${post.images[currentImageIndex]}`}
+                                    alt={`Imagem ${currentImageIndex + 1} da Postagem`}
+                                    className="post-image"
+                                />
+                                <div className="image-buttons">
+                                    {post.images.map((_, index) => (
+                                        index !== currentImageIndex && (
+                                            <button
+                                                key={`button-${index}`}
+                                                onClick={() => handleImageChange(index)}
+                                                className="image-button"
+                                            >
+                                                {`Imagem ${index + 1}`}
+                                            </button>
+                                        )
                                     ))}
                                 </div>
                             </div>
@@ -63,15 +62,14 @@ const PostDetailPage = () => {
                             <p>{post.description}</p>
                         </div>
 
-
                         <section className="quiz-section">
-                            <h2 className="quiz-title">Teste seu aprendizado</h2>
-                            <p className="quiz-description">
+                            <h2>Teste seu aprendizado</h2>
+                            <p>
                                 Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz sobre {post.title}! Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!
                             </p>
-                            <button 
-                            className="quiz-button"
-                            onClick={() => window.location.href = `/category/${categoriaId}/posts/${postId}/quiz`}
+                            <button
+                                className="quiz-button"
+                                onClick={() => window.location.href = `/category/${categoriaId}/posts/${postId}/quiz`}
                             >
                                 Quiz
                             </button>

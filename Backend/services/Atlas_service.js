@@ -87,7 +87,6 @@ initializeData() {
   getCategoriaById(categoriaId) {
     const categoria = this.categorias.find(cat => cat.id === parseInt(categoriaId));
     if (!categoria) {
-      console.error('Categoria não encontrada');
       throw new Error('Categoria não encontrada');
     }
     return categoria;
@@ -125,12 +124,10 @@ initializeData() {
     return quiz;
   }
 
-  
-
   // Alterando a imagem atual
   changePostImage(categoriaId, postId, newIndex) {
     const categoria = this.getCategoriaById(categoriaId);
-    const post = categoria.posts.find(p => p.id === postId);
+    const post = categoria.posts.find(p => p.id === parseInt(postId));
 
     if (!categoria) {
       throw new Error("Categoria não encontrada");
@@ -139,7 +136,8 @@ initializeData() {
     }
   
     try {
-      return post.changeImage(newIndex);
+      const newImage = post.changeImage(newIndex);
+      return newImage; // Retorna a nova imagem exibida
     } catch (error) {
       throw new Error(error.message);
     }

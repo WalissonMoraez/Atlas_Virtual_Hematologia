@@ -18,7 +18,17 @@ router.get('/categorias/:categoriaId/posts', Atlas_controller.getPostagensByCate
 router.post('/categorias/:categoriaId/posts', Atlas_controller.addPostagemToCategoria);
 
 // Rota para alterar a imagem de uma postagem específica
-router.post('/categorias/:categoriaId/posts/:postId/images', Postagem_controller.changePostImage);
+router.post('/categorias/:categoriaId/posts/:postId/images', (req, res) => {
+  try {
+    const { categoriaId, postId } = req.params;
+    const { newIndex } = req.body; // O índice da nova imagem que deve ser exibida
+    
+    const newImage = Atlas_service.changePostImage(parseInt(categoriaId), parseInt(postId), newIndex);
+    res.status(200).json({ currentImage: newImage });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 // Rota para obter uma postagem específica
 router.get('/categorias/:categoriaId/posts/:postId', Postagem_controller.getPostagemById);
