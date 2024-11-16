@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ufjLogo from '../assets/LogoUFJ.png'; // Importe a logo da UFJ
 import { getQuizDetails, getPostDetails } from '../services/api';
 import Footer from '../components/Footer';
+import Navbar2 from '../components/Navbar2';
 import '../App.css'; 
 
 const QuizPage = () => {
@@ -60,12 +60,7 @@ const QuizPage = () => {
     return (
         <div className='quiz-cotainer'>
             {/* Header com Navbar e Título */}
-            <header>
-                <nav className="navbar">
-                    <img src={ufjLogo} alt="UFJ Logo" />
-                        <h1>{postDetails ? postDetails.title : "Carregando título..."}</h1>            
-                </nav>
-            </header>
+            <Navbar2 title={postDetails ? postDetails.title : "Carregando título..."} />
 
             <h1 className='quiz-title'>Teste seu conhecimento</h1>
             {quiz ? (

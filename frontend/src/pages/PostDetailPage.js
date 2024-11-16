@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import { useParams } from 'react-router-dom';
+import Navbar2 from '../components/Navbar2';
 import Footer from '../components/Footer';
 import { getPostDetails } from '../services/api';
 import '../App.css';
@@ -31,7 +31,7 @@ const PostDetailPage = () => {
     
     return (
         <div>
-            <Navbar />
+            <Navbar2 title='ARRUMAR AQUI' />
             <div className="post-detail-content">
                 {post ? (
                     <>
@@ -59,7 +59,7 @@ const PostDetailPage = () => {
                         </div>
 
                         <div className="description-section">
-                            <h3><strong>Descrição</strong></h3>
+                            <h3>Descrição</h3>
                             <p>{post.description}</p>
                         </div>
 
@@ -67,7 +67,7 @@ const PostDetailPage = () => {
                         <section className="quiz-section">
                             <h2 className="quiz-title">Teste seu aprendizado</h2>
                             <p className="quiz-description">
-                                Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz sobre este tema! Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!
+                                Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz sobre {post.title}! Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!
                             </p>
                             <button 
                             className="quiz-button"
@@ -75,7 +75,6 @@ const PostDetailPage = () => {
                             >
                                 Quiz
                             </button>
-                            <Link to="/" className="back-link"><strong>VOLTAR À PÁGINA PRINCIPAL</strong></Link>
                         </section>
                     </>
                 ) : (

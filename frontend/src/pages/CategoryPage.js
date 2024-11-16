@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import Footer from '../components/Footer';
+import Navbar2 from '../components/Navbar2';
 import PostCard from '../components/PostCard';
 import { getCategoryDetails } from '../services/api';
 import '../App.css';
@@ -13,7 +14,6 @@ const CategoryPage = () => {
         const fetchCategoryDetails = async () => {
             try {
                 const data = await getCategoryDetails(categoriaId);
-                console.log("Dados recebidos da API:", data); // Verifique a estrutura dos dados no console
                 if (data) {
                     setCategoryDetails({
                         name: data.name || 'Título não disponível',
@@ -32,14 +32,11 @@ const CategoryPage = () => {
     return (
         <div>
             <div className="category-content">
-                <nav className='category-header'>
-                    <h1>{categoryDetails.name}</h1>
-                    <p>{categoryDetails.description}</p>
-                </nav>
+                <Navbar2 title={categoryDetails.name}/>
 
                 <section className="study-section">
-                    <h2>Estude as postagens</h2>
-                    <p>Células são essenciais para a manutenção da vida, pois garantem que os tecidos do corpo recebam o oxigênio necessário para suas funções metabólicas.</p>
+                    <h2>Estude as {categoryDetails.name}</h2>
+                    <p>{categoryDetails.description}</p>
                     <div className="posts-grid">
                         {Array.isArray(categoryDetails.posts) && categoryDetails.posts.length > 0 ? (
                             categoryDetails.posts.map(post => (

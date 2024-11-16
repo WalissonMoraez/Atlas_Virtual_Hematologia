@@ -5,7 +5,7 @@ import '../App.css'; // Certifique-se de que o CSS correto está importado
 const PostCard = ({ post, categoriaId }) => {
     return (
         <Link to={`/category/${categoriaId}/posts/${post.id}`}>
-            <div className="category-card">
+            <div className="post-card">
                 <h3>{post.title || "Título não disponível"}</h3>
             </div>
         </Link>
