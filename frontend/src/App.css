@@ -582,6 +582,25 @@ html {
   background-color: #d3d3d3;
   padding: 10px;
   border-radius: 5px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Resposta correta */
+.option-label.correct {
+  border-color: #28a745; /* Verde */
+  background-color: #d4edda;
+}
+
+/* Resposta incorreta */
+.option-label.incorrect {
+  border-color: #dc3545; /* Vermelho */
+  background-color: #f8d7da;
+}
+
+/* Alteração ao passar o mouse */
+.option-label:hover {
+  background-color: #e0e0e0;
 }
 
 .confirm-button {

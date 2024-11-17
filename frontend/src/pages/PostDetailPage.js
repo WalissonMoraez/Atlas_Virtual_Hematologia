@@ -41,7 +41,7 @@ const PostDetailPage = () => {
             <div className="post-detail-content">
                 {post ? (
                     <>
-                        <div className="post-detail-main">
+                        <div className="post-main-detail">
                         {/* Contêiner principal que organiza a imagem e as opções */}
                         <div className="image-selector-container">
                             {/* Imagem principal */}
@@ -51,19 +51,19 @@ const PostDetailPage = () => {
                                 className="post-image"
                             />
 
-                            {/* Opções de seleção */}
+                            {/* Opções de seleção de imagem com títulos personalizados */}
                             <div className="selector-options">
-                                {post.images.slice(1).map((_, index) => (
-                                    <label key={index} className="option-label">
-                                        <input
-                                            type="checkbox"
-                                            name="imageSelector"
-                                            value={index + 1}
-                                            checked={currentImageIndex === index + 1}
-                                            onChange={() => handleOptionChange(index + 1)}
-                                        />
-                                        IMAGEM {index + 1}
-                                    </label>
+                                {post.titlebutton?.map((title, index) => (
+                                        <label key={index} className="option-label">
+                                            <input
+                                                type="checkbox"
+                                                name="imageSelector"
+                                                value={index + 1}
+                                                checked={currentImageIndex === index + 1}
+                                                onChange={() => handleOptionChange(index + 1)}
+                                            />
+                                            {title}
+                                        </label>
                                 ))}
                             </div>
                         </div>

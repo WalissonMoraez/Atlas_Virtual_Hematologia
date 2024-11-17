@@ -1,5 +1,5 @@
 class Postagem_models {
-  constructor(id, images, title, description, quizId = null, categoriaId) {
+  constructor(id, images, title, description, quizId = null, categoriaId, titlebutton) {
     this.id = id;
     this.title = title;
     this.images = images; // Deve ser um array de URLs
@@ -7,7 +7,13 @@ class Postagem_models {
     this.categoriaId = categoriaId;
     this.quizId = quizId; // Referência ao Quiz, se existir
     this.currentImageIndex = 0; // Índice da imagem atualmente exibida
+    this.titlebutton = titlebutton; // Titulos para cada botão, baseado nas imagens
   }
+
+    // Método para gerar os títulos dos botões automaticamente, um para cada imagem -1
+    generateTitulosDosBotoes(images) {
+      return images.slice(0, -1).map((_, index) => `Destacar característica ${index + 1}`);
+    }
 
     // Método para alterar a imagem exibida
     changeImage(newIndex) {
