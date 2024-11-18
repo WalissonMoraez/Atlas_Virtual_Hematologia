@@ -30,10 +30,10 @@ const CategoryPage = () => {
     }, [categoriaId]);
 
     return (
-        <div>
-            <div className="category-content">
-                <Navbar2 title={categoryDetails.name}/>
-
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <div className="category-content" style={{ flex: 1 }}>
+                <Navbar2 title={categoryDetails.name} />
+    
                 <section className="study-section">
                     <h2>Estude as {categoryDetails.name}</h2>
                     <p>{categoryDetails.description}</p>
@@ -51,6 +51,7 @@ const CategoryPage = () => {
             <Footer />
         </div>
     );
+    
 };
 
 export default CategoryPage;

@@ -37,6 +37,13 @@
   }
 }
 
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /*--------------------------------------- PAGINA PRINCIPAL COM CATEGORIAS --------------------------------------------------*/
 
 /* Estilização geral */
@@ -44,8 +51,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2; /* Fundo claro */
   height: 100%;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -202,14 +209,13 @@ html {
 
 /* Estilo do footer */
 .footer {
-  margin-top: auto;
-  margin: 0;
   background-color: #003366;
   color: white;
   text-align: center;
   padding: 20px;
-  position: static;
+  margin-top: auto;
   width: 100%;
+  position: relative; /* Certifique-se de não usar "absolute" ou "fixed" */
   bottom: 0;
 }
 
@@ -296,6 +302,17 @@ html {
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h3 {
+  text-decoration: none; /* Remove o sublinhado */
+  color: white; /* Ajuste a cor, se necessário */
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.post-card h3:hover {
+  text-decoration: none;
 }
 
 .post-card:hover {

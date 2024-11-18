@@ -21,23 +21,23 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div>
-            < Navbar/>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
+            <div style={{ flex: 1 }}>
                 <div className="categories-section">
                     <h2>Estude as células do sangue</h2>
                     <p>O estudo das células sanguíneas na hematologia é essencial para diagnosticar e monitorar doenças como anemia, leucemia e infecções, além de avaliar tratamentos.</p>
-                        <div className="categories-grid">
-                            {categories.map(category => (
-                                <CategoryCard
-                                    key={category.id}
-                                    title={category.name}
-                                    image={category.imageUrl}
-                                    onClick={() => window.location.href = `/category/${category.id}`}
-                                />
-                            ))}
-                        </div>
+                    <div className="categories-grid">
+                        {categories.map(category => (
+                            <CategoryCard
+                                key={category.id}
+                                title={category.name}
+                                image={category.imageUrl}
+                                onClick={() => window.location.href = `/category/${category.id}`}
+                            />
+                        ))}
+                    </div>
                 </div>
-                {/* Adicione a seção "Sobre o projeto" aqui */}
                 <div className="about-section">
                     <h2>Sobre o projeto</h2>
                     <p>
@@ -47,6 +47,7 @@ const HomePage = () => {
                         conhecimento em hematologia.
                     </p>
                 </div>
+            </div>
             <Footer />
         </div>
     );
