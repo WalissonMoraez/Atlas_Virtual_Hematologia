@@ -30,6 +30,14 @@ class Quiz_service {
     return quiz;
   }
 
+  // Método para listar todos os quizzes
+  getAllQuizzes() {
+    if (this.quizzes.length === 0) {
+      throw new Error("Nenhum quiz encontrado");
+    }
+    return this.quizzes;
+  }
+
   // Verificar respostas do usuário para um quiz específico
   verificarRespostas(quizId, responseUser) {
     const quiz = this.getQuizById(quizId);

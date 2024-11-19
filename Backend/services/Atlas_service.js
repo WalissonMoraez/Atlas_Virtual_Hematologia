@@ -5,6 +5,7 @@ const Categoria_models = require('../models/Categoria_models');
 const Postagem_models = require('../models/Postagem_models');
 const Quiz_models = require('../models/Quiz_models');
 const Pergunta_quiz_models = require('../models/Pergunta_quiz_models');
+const Quiz_service = require('../services/Quiz_service');
 
 
 class Atlas_service {
@@ -39,80 +40,24 @@ initializeData() {
     new Pergunta_quiz_models(Date.now()+16, 'Seu núcleo é multilobulado, no qual os lóbulos são conectados por um delicado filamento de cromatina, apresentando uma fina granulação. Tal afirmação se refere à:', ['Basófilos', 'Neutrófilos Segmentado', 'Eosinófilos', 'Neutrófilos Bastonetes'], 1),
     new Pergunta_quiz_models(Date.now()+17, 'São células que estão em escassa quantidade na circulação sanguínea sob condições fisiológicas normais, apresentando um núcleo com configuração de bastão. Tal afirmação de refere à: ', ['Basófilos', 'Neutrófilos Segmentado', 'Eosinófilos', 'Neutrófilos Bastonetes'], 3),
   ];
-  const quiz1 = new Quiz_models(Date.now()+18, perguntasQuiz);
-  this.addQuiz(quiz1);
+  const quiz1 = new Quiz_models(1, perguntasQuiz);
+  Quiz_service.quizzes.push(quiz1);
 
-  const gv1 = new Postagem_models(Date.now()+19, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Hemácias', 'As hemácias, também chamadas de eritrócitos ou glóbulos vermelhos, são as células encontradas em maior abundância no tecido sanguíneo, são anucleadas e tem formato de disco bicôncavo medindo de 7 a 8 µm de diâmetro. Seu formato faz com que a afinidade com moléculas seja maior, facilitando na troca de gases. A composição dos eritrócitos é de 95% de hemoglobina, o que dá a cor avermelhada para as células. Sua principal função é o transporte de oxigênio (O2) e dióxido de carbono (CO2), essa troca de gases é feita pela diferença de pH do meio e da hemácia.', quiz1.id, gv.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gv1 = new Postagem_models(Date.now()+19, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Hemácias', 'As hemácias, também chamadas de eritrócitos ou glóbulos vermelhos, são as células encontradas em maior abundância no tecido sanguíneo, são anucleadas e tem formato de disco bicôncavo medindo de 7 a 8 µm de diâmetro. Seu formato faz com que a afinidade com moléculas seja maior, facilitando na troca de gases. A composição dos eritrócitos é de 95% de hemoglobina, o que dá a cor avermelhada para as células. Sua principal função é o transporte de oxigênio (O2) e dióxido de carbono (CO2), essa troca de gases é feita pela diferença de pH do meio e da hemácia.', null, gv.id, ['Crenada','Suiif']);
 
-  const gb1 = new Postagem_models(Date.now()+20, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Neutrófilo Segmentado', 'O neutrófilo segmentado é caracterizado por ser uma célula com um núcleo multilobulado, geralmente com 2 a 4 lóbulos, contendo cromatina púrpura escura e densa. Esses lóbulos são conectados por um delicado filamento de cromatina, muitas vezes imperceptível na microscopia convencional. O citoplasma é rico, com uma coloração levemente rosada e apresenta uma fina granulação, que pode conferir ao citoplasma uma aparência de vidro fosco.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb1 = new Postagem_models(Date.now()+20, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Neutrófilo Segmentado', 'O neutrófilo segmentado é caracterizado por ser uma célula com um núcleo multilobulado, geralmente com 2 a 4 lóbulos, contendo cromatina púrpura escura e densa. Esses lóbulos são conectados por um delicado filamento de cromatina, muitas vezes imperceptível na microscopia convencional. O citoplasma é rico, com uma coloração levemente rosada e apresenta uma fina granulação, que pode conferir ao citoplasma uma aparência de vidro fosco.', null, gb.id, ['Crenada','Suiif']);
 
-  const gb2 = new Postagem_models(Date.now()+21, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Neutrófilo Bastonete', 'Os neutrófilos em estágio bastonete estão presentes em escassa quantidade na circulação sanguínea periférica sob condições fisiológicas normais. Eles se distinguem de formas celulares mais imaturas pela maior condensação da cromatina e pela modificação da morfologia nuclear, que adota a configuração de um bastão ou meia lua, resultando em um diâmetro praticamente uniforme ao longo de sua extensão.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb2 = new Postagem_models(Date.now()+21, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Neutrófilo Bastonete', 'Os neutrófilos em estágio bastonete estão presentes em escassa quantidade na circulação sanguínea periférica sob condições fisiológicas normais. Eles se distinguem de formas celulares mais imaturas pela maior condensação da cromatina e pela modificação da morfologia nuclear, que adota a configuração de um bastão ou meia lua, resultando em um diâmetro praticamente uniforme ao longo de sua extensão.', null, gb.id, ['Crenada','Suiif']);
 
-  const gb3 = new Postagem_models(Date.now()+22, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Eosinófilo', 'Os eosinófilos exibem um diâmetro médio de cerca de 8 µm. O citoplasma dessas células é notavelmente abundante e caracterizado pela presença de aproximadamente vinte grânulos eosinofílicos por célula. O núcleo é bilobulado e apresenta cromatina densa, que é intensamente corada em eosina. Apresentam granulação grosseira, formada por grânulos primários e os grânulos secundários que se coram intensamente de cor avermelhada/alaranjada.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb3 = new Postagem_models(Date.now()+22, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Eosinófilo', 'Os eosinófilos exibem um diâmetro médio de cerca de 8 µm. O citoplasma dessas células é notavelmente abundante e caracterizado pela presença de aproximadamente vinte grânulos eosinofílicos por célula. O núcleo é bilobulado e apresenta cromatina densa, que é intensamente corada em eosina. Apresentam granulação grosseira, formada por grânulos primários e os grânulos secundários que se coram intensamente de cor avermelhada/alaranjada.', null, gb.id, ['Crenada','Suiif']);
 
-  const gb4 = new Postagem_models(Date.now()+23, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Basófilos', 'Os basófilos são reconhecidos pela presença de grânulos citoplasmáticos que se coram com corantes básicos, adquirindo uma tonalidade purpúrea escura nas técnicas de coloração convencionais. Além da distinção proporcionada pelos grânulos basófilos, essa subpopulação celular é relativamente grande, apresentando um diâmetro entre 10 e 15 µm. O citoplasma é abundante, com uma coloração rosada e uma alta concentração de grânulos basófilos. Além disso, os basófilos possuem estruturas citoplasmáticas conhecidas como corpos lipídicos, que são ricos em ácido aracdônico e apresentam uma densidade eletrônica elevada. O núcleo é multilobulado e exibe uma cromatina densa.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb4 = new Postagem_models(Date.now()+23, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Basófilos', 'Os basófilos são reconhecidos pela presença de grânulos citoplasmáticos que se coram com corantes básicos, adquirindo uma tonalidade purpúrea escura nas técnicas de coloração convencionais. Além da distinção proporcionada pelos grânulos basófilos, essa subpopulação celular é relativamente grande, apresentando um diâmetro entre 10 e 15 µm. O citoplasma é abundante, com uma coloração rosada e uma alta concentração de grânulos basófilos. Além disso, os basófilos possuem estruturas citoplasmáticas conhecidas como corpos lipídicos, que são ricos em ácido aracdônico e apresentam uma densidade eletrônica elevada. O núcleo é multilobulado e exibe uma cromatina densa.', null, gb.id, ['Crenada','Suiif']);
 
-  const gb5 = new Postagem_models(Date.now()+24, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Monócitos', 'As células apresentam um tamanho entre 12 e 15 µm de diâmetro em relação à sua morfologia. O citoplasma é abundante e exibe uma coloração cinza ou azul-claro acinzentada, com uma fina granulação, dando-lhe uma aparência de vidro fosco devido a essa granulação, assemelhando-se a uma fina poeira. É comum encontrar vacúolos citoplasmáticos nas células. O núcleo, geralmente grande, oval ou indentado, está posicionado centralmente na célula, enquanto o nucléolo não é facilmente visível em colorações convencionais. A relação nucleocitoplasmática é baixa. A cromatina é delicada, predominantemente frouxa, com filamentos estreitos conectando pequenas áreas de cromatina mais densa.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb5 = new Postagem_models(Date.now()+24, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Monócitos', 'As células apresentam um tamanho entre 12 e 15 µm de diâmetro em relação à sua morfologia. O citoplasma é abundante e exibe uma coloração cinza ou azul-claro acinzentada, com uma fina granulação, dando-lhe uma aparência de vidro fosco devido a essa granulação, assemelhando-se a uma fina poeira. É comum encontrar vacúolos citoplasmáticos nas células. O núcleo, geralmente grande, oval ou indentado, está posicionado centralmente na célula, enquanto o nucléolo não é facilmente visível em colorações convencionais. A relação nucleocitoplasmática é baixa. A cromatina é delicada, predominantemente frouxa, com filamentos estreitos conectando pequenas áreas de cromatina mais densa.', null, gb.id, ['Crenada','Suiif']);
 
-  const gb6 = new Postagem_models(Date.now()+25, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Linfócitos', 'São células pequenas (com dimensões entre 6 e 15 µm), regulares e arredondadas. Apresentam uma relação nucleocitoplasmática elevada, com o núcleo ocupando aproximadamente 90% da área da célula. O citoplasma é escasso e basófilo, enquanto o núcleo é regular e esférico, exibindo uma tonalidade azul-arroxeada e uma cromatina sem nucléolo evidente.', quiz1.id, gb.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const gb6 = new Postagem_models(Date.now()+25, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Linfócitos', 'São células pequenas (com dimensões entre 6 e 15 µm), regulares e arredondadas. Apresentam uma relação nucleocitoplasmática elevada, com o núcleo ocupando aproximadamente 90% da área da célula. O citoplasma é escasso e basófilo, enquanto o núcleo é regular e esférico, exibindo uma tonalidade azul-arroxeada e uma cromatina sem nucléolo evidente.', null, gb.id, ['Crenada','Suiif']);
 
-  const pl1 = new Postagem_models(Date.now()+26, [
-    '/public/images/hemacias/hemacia0.jpg',
-    '/public/images/hemacias/hemacia1.jpg',
-    '/public/images/hemacias/hemacia0.jpg'
-  ], 'Plaquetas', 'Plaquetas são fragmentações derivadas do citoplasma de megacariócitos na medula óssea, sendo que cada megacariócito origina em média 3000 plaquetas. As plaquetas medem cerca de 1 a 3 µm de diâmetro e vivem, em média, 10 dias na circulação sanguínea. Elas apresentam forma discóide, sem núcleo e no citoplasma há a presença de mitocôndrias,  numerosos grânulos com diferentes densidades eletrônicas e glicogênio, servindo como fonte de energia para as plaquetas. Por fim, a função das plaquetas é realizar a manutenção da integridade dos endotélios vasculares, com seu papel na hemostasia primária.', quiz1.id, pl.id, [
-    'Crenada',
-    'Suiif'
-  ]);
+  const pl1 = new Postagem_models(Date.now()+26, ['/public/images/hemacias/hemacia0.jpg','/public/images/hemacias/hemacia1.jpg','/public/images/hemacias/hemacia0.jpg'], 'Plaquetas', 'Plaquetas são fragmentações derivadas do citoplasma de megacariócitos na medula óssea, sendo que cada megacariócito origina em média 3000 plaquetas. As plaquetas medem cerca de 1 a 3 µm de diâmetro e vivem, em média, 10 dias na circulação sanguínea. Elas apresentam forma discóide, sem núcleo e no citoplasma há a presença de mitocôndrias,  numerosos grânulos com diferentes densidades eletrônicas e glicogênio, servindo como fonte de energia para as plaquetas. Por fim, a função das plaquetas é realizar a manutenção da integridade dos endotélios vasculares, com seu papel na hemostasia primária.',null, pl.id, ['Crenada','Suiif']);
 
   gv.addPost(gv1);
     gb.addPost(gb1);
@@ -126,7 +71,6 @@ initializeData() {
   this.categorias.push(gb);
   this.categorias.push(pl);
 }
-
 
 //------------------------------------------------Funcoes para utilizar o atlas ------------------------------------------------
   // Adicionar uma nova categoria ao Atlas
@@ -142,14 +86,15 @@ initializeData() {
   }
 
   // Adicionar uma nova postagem a uma categoria existente
-  addPostagemToCategoria(categoriaId,  title, images, description, questions, titlebutton) {
+  addPostagemToCategoria(categoriaId, title, images, description, questions = [], titlebutton = []) {
     const categoria = this.getCategoriaById(categoriaId);
     if (!categoria) {
       throw new Error('Categoria não encontrada');
     }
-
+  
     let quizId = null;
-    if (questions && questions.length > 0) {
+    // Se houver perguntas, cria o quiz e obtém o ID
+    if (questions.length > 0) {
       const quizQuestions = questions.map(q => {
         const { textQuestion, response, responseCorrect } = q;
   
@@ -165,11 +110,11 @@ initializeData() {
       quizId = newQuiz.id;
       this.addQuiz(newQuiz);
     }
-    
-  // Certifique-se de que description está sendo corretamente passada
-  const newPost = new Postagem_models(Date.now(), title, images, description, quizId, categoriaId, titlebutton);
-  categoria.posts.push(newPost);
-  return newPost;
+  
+    // Criar uma nova postagem sem quiz associado
+    const newPost = new Postagem_models(Date.now(), images, title, description, quizId, categoriaId, titlebutton);
+    categoria.posts.push(newPost);
+    return newnull
   }
 
   // Listar todas as categorias no Atlas

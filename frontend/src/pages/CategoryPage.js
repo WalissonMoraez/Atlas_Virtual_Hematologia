@@ -35,7 +35,7 @@ const CategoryPage = () => {
                 <Navbar2 title={categoryDetails.name} />
     
                 <section className="study-section">
-                    <h2>Estude as {categoryDetails.name}</h2>
+                    <h2>Estude sobre {categoryDetails.name}</h2>
                     <p>{categoryDetails.description}</p>
                     <div className="posts-grid">
                         {Array.isArray(categoryDetails.posts) && categoryDetails.posts.length > 0 ? (

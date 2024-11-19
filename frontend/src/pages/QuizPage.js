@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getQuizDetails, getPostDetails } from '../services/api';
+import { getQuizDetails, getPostDetails, getQuiz  } from '../services/api';
 import Footer from '../components/Footer';
 import Navbar2 from '../components/Navbar2';
 import '../App.css'; 
 
 const QuizPage = () => {
-    const { categoriaId, postId } = useParams();
+    //const { categoriaId, postId } = useParams(); Uso para quiz da postagem
+    const { quizId } = useParams(); // Pega o quizId da URL
     const [quiz, setQuiz] = useState(null);
-    const [postDetails, setPostDetails] = useState(null); // Estado para armazenar os detalhes da postagem
+    //const [postDetails, setPostDetails] = useState(null); // Estado para armazenar os detalhes da postagem
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [score, setScore] = useState(null);
 
-    // Carrega os detalhes do quiz
+
+{/*
+    // Carrega os detalhes do quiz na postagem, trabalho futuro!!!
     useEffect(() => {
         const fetchQuizDetails = async () => {
             try {
@@ -37,6 +40,23 @@ const QuizPage = () => {
         };
         fetchPostDetails();
     }, [categoriaId, postId]);
+*/}
+
+    // Carrega os detalhes do quiz
+    useEffect(() => {
+        console.log("quizId:", quizId); // Adicione este console.log para verificar o valor
+        const fetchQuiz = async () => {
+            if (quizId) {
+                try {
+                    const quizData = await getQuiz(quizId);
+                    setQuiz(quizData);
+                } catch (error) {
+                    console.error("Erro ao buscar o quiz:", error);
+                }
+            }
+        };
+        fetchQuiz();
+    }, [quizId]);
 
     // Lida com a seleção de uma resposta
     const handleAnswerChange = (questionIndex, altIndex) => {
@@ -60,7 +80,7 @@ const QuizPage = () => {
     return (
         <div className='quiz-cotainer'>
             {/* Header com Navbar e Título */}
-            <Navbar2 title={postDetails ? postDetails.title : "Carregando título..."} />
+            <Navbar2 title="Quiz" />
 
             <h1 className='quiz-title'>Teste seu conhecimento</h1>
             {quiz ? (

@@ -12,7 +12,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/category/:id" element={<CategoryPage />} />
                 <Route path="/category/:categoriaId/posts/:postId" element={<PostDetailPage />} />
-                <Route path="/category/:categoriaId/posts/:postId/quiz" element={<QuizPage />} />
+                {/*<Route path="/category/:categoriaId/posts/:postId/quiz" element={<QuizPage />} />*/}
+                <Route path="/quiz/:quizId" element={<QuizPage />} />
             </Routes>
         </Router>
     );

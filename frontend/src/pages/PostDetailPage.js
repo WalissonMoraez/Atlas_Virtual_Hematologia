@@ -73,7 +73,8 @@ const PostDetailPage = () => {
                             <h3>Descrição</h3>
                             <p>{post.description}</p>
                         </div>
-
+                        
+                    {/* Quiz para cada postagem
                         <section className="quiz-section">
                             <h2>Teste seu aprendizado</h2>
                             <p>
@@ -86,6 +87,7 @@ const PostDetailPage = () => {
                                 Quiz
                             </button>
                         </section>
+                        */}
                     </>
                 ) : (
                     <p>Carregando...</p> // Exibe uma mensagem de carregamento enquanto a postagem não é carregada

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import CategoryCard from '../components/CategoryCard';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { getCategories } from '../services/api';
+import ufjLogo from '../assets/LogoUFJ.png'; // Importe a logo da UFJ
+import { getCategories, getCategoryDetails } from '../services/api';
 import '../App.css'; // Caminho para o arquivo de estilo
 
 const HomePage = () => {
@@ -20,26 +21,58 @@ const HomePage = () => {
             });
     }, []);
 
+    const handleCategoryClick = async (categoryId) => {
+        try {
+            const categoryDetails = await getCategoryDetails(categoryId);
+            if (categoryDetails.posts.length === 1) {
+                // Redireciona para a PostDetailPage se houver apenas uma postagem
+                const postId = categoryDetails.posts[0].id;
+                window.location.href = `/category/${categoryId}/posts/${postId}`;
+            } else {
+                // Redireciona para a CategoryPage se houver mais de uma postagem
+                window.location.href = `/category/${categoryId}`;
+            }
+        } catch (error) {
+            console.error("Erro ao verificar os detalhes da categoria:", error);
+        }
+    };
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
-            <div style={{ flex: 1}}>
+            <div style={{ flex: 1 }}>
                 <div className="categories-section">
                     <h2>Estude as células do sangue</h2>
                     <p>
                         As células do sangue é importante para entender como o corpo funciona e identificar problemas de saúde. O sangue transporta oxigênio, nutrientes e ajuda a combater doenças. Analisar as células sanguíneas ajuda a diagnosticar condições como anemias e infecções, além de contribuir para tratamentos que melhoram a qualidade de vida.
                     </p>
                     <div className="categories-grid">
-                        {categories.map(category => (
-                            <CategoryCard
-                                key={category.id}
-                                title={category.name}
-                                image={category.imageUrl}
-                                onClick={() => window.location.href = `/category/${category.id}`}
-                            />
-                        ))}
+                        {Array.isArray(categories) && categories.length > 0 ? (
+                            categories.map(category => (
+                                <CategoryCard
+                                    key={category.id}
+                                    title={category.name}
+                                    image={category.imageUrl}
+                                    onClick={() => handleCategoryClick(category.id)}
+                                />
+                            ))
+                        ) : (
+                            <p>Nenhuma categoria disponível.</p>
+                        )}
                     </div>
                 </div>
+                <section className="quiz-section">
+                            <h2>Teste seu aprendizado</h2>
+                            <p>
+                                Pronto para testar seus conhecimentos? Clique no botão abaixo e desafie-se com um quiz! Explore suas habilidades e descubra o quanto já aprendeu sobre este tema. Boa sorte!
+                            </p>
+                            <button
+                                className="quiz-button"
+                                onClick={() => window.location.href = `/quiz/1`}
+                            >
+                                Quiz
+                            </button>
+                </section>
                 <div className="about-section">
                     <h2>Sobre o projeto</h2>
                     <p>
@@ -56,12 +89,14 @@ const HomePage = () => {
                       entre diferentes áreas, com o propósito de aprimorar a qualidade do ensino e fomentar a 
                       autonomia dos estudantes nesta área essencial da Biomedicina.
                     </p>
+                    <img src={ufjLogo} alt="UFJ Logo" />
                 </div>
+                            {/* QUIZ FASE 1*/}
+                
             </div>
             <Footer />
         </div>
     );
-    
 };
 
 export default HomePage;
