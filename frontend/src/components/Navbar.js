@@ -8,7 +8,8 @@ const Navbar = () => {
         <nav className="navbar">
             <img src={ufjLogo} alt="UFJ Logo" />
             <h1>Atlas interativo de Hematologia</h1>
-            <p>Ferramenta interativa para auxílio no estudo de hematologia</p> {/* Adicione ou remova o texto conforme desejado */}
+            <p>Lâminas sanguíneas interativas, conteúdos detalhados e quizzes desafiadores, 
+            <br/>projetados para transformar o aprendizado em autonomia no estudo da hematologia.</p> {/* Adicione ou remova o texto conforme desejado */}
         </nav>
     );
 };

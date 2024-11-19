@@ -53,12 +53,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .subtitle {
@@ -70,11 +72,10 @@ html {
 .navbar {
   background: url('../src/assets/background-imagem.png') no-repeat center center; /* Caminho da sua imagem */
   background-size: cover; /* Ajusta a imagem para cobrir toda a barra */
-  position: relative;
-  padding: 10px 0px 20px;
+  padding: 22px 20px; /* Adiciona espaçamento ao redor */
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: white; /* Cor do texto */
+  position: relative;
 }
 
 .navbar::before {
@@ -89,26 +90,30 @@ html {
 
 /* Estilização do texto e logo na navbar */
 .navbar h1{
-  margin: 0;
-  font-size: 1.8em;
-  color: white;
+  margin-top: 0;
+  text-align: center;
+  font-size: 2.30rem; /* Tamanho grande para o título principal */
+  font-weight: 1000; /* Negrito para destaque */
+  text-transform: uppercase; /* Deixa todo o texto em maiúsculo */
+  margin-bottom: 0px; /* Espaçamento entre o título e subtítulo */
 }
 
 /* Estilo para centralizar a logo */
 .navbar img {
-  margin-right: 10px;
-  height: auto;
-  margin: 0 auto 0px auto; /* Centraliza a logo e adiciona margem inferior */
-  width: 100px; /* Ajuste o tamanho conforme necessário */
+  margin: 0; /* Centraliza a logo e adiciona margem inferior */
+  width: 200px; /* Ajuste o tamanho conforme necessário */
+  margin-bottom: 0px;
+
 }
 
 /* Adicione isso ao seu arquivo App.css */
 .navbar p {
-  color: #dfdfdf;
-  font-size: 18px; /* Ajuste o tamanho conforme desejado */
-  margin-top: 12px;
-  margin-bottom: 15px;
-  margin: 0; /* Remove a margem para um ajuste mais preciso */
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2rem; /* Tamanho menor para o subtítulo */
+  font-weight: 500; /* Fonte mais leve */
+  line-height: 1; /* Melhora o espaçamento entre linhas */
+  color: #dcdcdc; /* Cor levemente mais clara */
 }
 
 /* Estilo da seção principal */
@@ -133,21 +138,27 @@ html {
   margin: 2rem 0;
 }
 
+.about-section, .categories-section {
+  margin-bottom: 0; /* Remove margens adicionais */
+}
 
 /* Estilo da seção de categorias */
 .categories-section {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10px;
+  margin: 0 auto; /* Centraliza o conteúdo */
+  padding: 40px;
 }
 
 .categories-section h2 {
+  margin-top: 0px;
   font-size: 24px;
   font-weight: bold;
   color: #1a1a1a;
-  margin-bottom: 10px;
 }
 
 .categories-section p {
+  text-align: justify;
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto 40px;
@@ -209,39 +220,40 @@ html {
 
 /* Estilo do footer */
 .footer {
+  margin-top: auto; /* Garante que o rodapé seja empurrado para o final */
+  padding: 20px;
   background-color: #003366;
   color: white;
   text-align: center;
-  padding: 20px;
-  margin-top: auto;
-  width: 100%;
-  position: relative; /* Certifique-se de não usar "absolute" ou "fixed" */
+  position: relative;
   bottom: 0;
+  width: 100%;
 }
 
 /* Estilização da seção "Sobre o projeto" */
 .about-section {
-  background-color: #08439A; /* Azul escuro */
+  margin: 0 auto;
+  background-color: #08439A; /* Mantém a cor azul */
   color: white;
-  padding: 2rem;
   text-align: center;
-  margin: 2rem 0;
-  border-radius: 0; /* Bordas retas */
-  margin-bottom: 0;
+  padding: 20px;
 }
 
 .about-section h2 {
-  margin-bottom: 15px;
+  margin: 0 auto;
   margin-top: 0px;
   font-size: 2rem;
   font-weight: bold;
 }
 
 .about-section p {
+  color: #dcdcdc;
+  text-align: justify; /* Alinha o texto à esquerda */
+  padding: 0; /* Remove espaçamentos extras */
   font-size: 1rem;
   line-height: 1.5;
   max-width: 800px;
-  margin: 0 auto; /* Centraliza o texto */
+  margin: 20px auto; /* Centraliza o texto */
 }
 
 /*---------------------------------------------- PAGINA POST ------------------------------------------------*/
