@@ -68,7 +68,7 @@ const HomePage = () => {
                             </p>
                             <button
                                 className="quiz-button"
-                                onClick={() => window.location.href = `api/quiz/1`}
+                                onClick={() => 'https://frontend-production-4d9f.up.railway.app/api/quiz/1'}
                             >
                                 Quiz
                             </button>
@@ -90,9 +90,7 @@ const HomePage = () => {
                       autonomia dos estudantes nesta área essencial da Biomedicina.
                     </p>
                     <img src={ufjLogo} alt="UFJ Logo" />
-                </div>
-                            {/* QUIZ FASE 1*/}
-                
+                </div>                
             </div>
             <Footer />
         </div>
