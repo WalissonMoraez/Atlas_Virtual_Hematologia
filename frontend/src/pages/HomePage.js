@@ -68,7 +68,7 @@ const HomePage = () => {
                             </p>
                             <button
                                 className="quiz-button"
-                                onClick={() => 'https://frontend-production-4d9f.up.railway.app/api/quiz/1'}
+                                onClick={() => window.location.href ='${process.env.REACT_APP_API_URL}/quiz/1'}
                             >
                                 Quiz
                             </button>

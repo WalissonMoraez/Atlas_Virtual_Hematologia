@@ -22,7 +22,7 @@ app.use('/api/atlas', Atlas_routes);        // Rotas principais do atlas
 app.use('/api/atlas', Categoria_routes);     // Rotas específicas para categorias
 app.use('/api/atlas', Postagem_routes);      // Rotas específicas para postagens
 app.use('/api/quiz', Quiz_routes);          // Rotas específicas para quizzes
-//app.use(cors({ origin: 'https://frontend-production-4d9f.up.railway.app' })); //Essa configuração permitirá que qualquer origem acesse a API. Para limitar a origens específicas
+app.use(cors({ origin: 'http://localhost:4000' })); //Essa configuração permitirá que qualquer origem acesse a API. Para limitar a origens específicas
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
