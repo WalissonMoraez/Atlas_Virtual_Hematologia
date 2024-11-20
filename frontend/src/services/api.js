@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Defina a URL base corretamente
-const BASE_URL = 'https://frontend-production-4d9f.up.railway.app'; // Substitua pela URL do seu backend, se necessário
+const BASE_URL = 'https://backend-production-47be.up.railway.app'; // Substitua pela URL do seu backend, se necessário
 
 // Crie uma instância do axios com a URL base
 const api = axios.create({
@@ -33,7 +33,7 @@ export const getPostDetails = async (categoriaId, postId) => {
 // Função para buscar um quiz específico
 export const getQuiz = async (quizId) => {
     try {
-        const response = await axios.get(`https://frontend-production-4d9f.up.railway.app/api/quiz/${quizId}`);
+        const response = await axios.get(`https://backend-production-47be.up.railway.app/api/quiz/${quizId}`);
         return response.data;
     } catch (error) {
         console.error("Erro ao buscar o quiz:", error); // Adicione esse console para verificar o erro específico
