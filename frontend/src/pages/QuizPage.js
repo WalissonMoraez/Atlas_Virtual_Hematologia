@@ -73,19 +73,17 @@ const QuizPage = () => {
 
     // Confirma as respostas e calcula o total de acertos
     const handleConfirmAnswers = () => {
-        if (quiz && quiz.questions) {
-            let correctAnswers = 0;
-            quiz.questions.forEach((question, index) => {
-                if (selectedAnswers[index] === question.idCorrect) {
-                    correctAnswers++;
-                }
-            });
-            setScore(correctAnswers);
-        }
+        let correctAnswers = 0;
+        quiz.questions.forEach((question, index) => {
+            if (selectedAnswers[index] === question.idCorrect) {
+                correctAnswers++;
+            }
+        });
+        setScore(correctAnswers);
     };
 
     return (
-        <div className='quiz-container'>
+        <div className='quiz-cotainer'>
             {/* Header com Navbar e Título */}
             <Navbar2 title="Quiz" />
 
@@ -94,56 +92,53 @@ const QuizPage = () => {
                 quiz.questions.length > 0 ? (
                     quiz.questions.map((question, questionIndex) => (
                         <div key={`question-${questionIndex}`} className="question-card">
-                            <h2 className='question-title'>Questão {questionIndex + 1}</h2>
-                            <p className='question-text'>{question.text}</p>
-                            <div className="options-container">
-                                {question.alternative.map((alt, altIndex) => {
-                                    let optionClass = ""; // Classe dinâmica para o estado da resposta
-
-                                    if (score !== null) { // Após submissão
-                                        if (altIndex === question.idCorrect) {
-                                            optionClass = "correct"; // Resposta correta
-                                        } else if (selectedAnswers[questionIndex] === altIndex) {
-                                            optionClass = "incorrect"; // Resposta incorreta
-                                        }
+                        <h2 className='question-title'>Questão {questionIndex + 1}</h2>
+                        <p className='question-text'>{question.text}</p>
+                        <div className="options-container">
+                            {question.alternative.map((alt, altIndex) => {
+                                let optionClass = ""; // Classe dinâmica para o estado da resposta
+                    
+                                if (score !== null) { // Após submissão
+                                    if (altIndex === question.idCorrect) {
+                                        optionClass = "correct"; // Resposta correta
+                                    } else if (selectedAnswers[questionIndex] === altIndex) {
+                                        optionClass = "incorrect"; // Resposta incorreta
                                     }
-
-                                    return (
-                                        <label key={`alt-${questionIndex}-${altIndex}`} className={`option-label ${optionClass}`}>
-                                            <input
-                                                type="radio"
-                                                name={`question-${questionIndex}`}
-                                                onChange={() => handleAnswerChange(questionIndex, altIndex)}
-                                                checked={selectedAnswers[questionIndex] === altIndex}
-                                                disabled={score !== null} // Desabilitar após envio
-                                            />
-                                            {alt}
-                                        </label>
-                                    );
-                                })}
-                            </div>
-                        </div>                
+                                }
+                    
+                                return (
+                                    <label key={`alt-${questionIndex}-${altIndex}`} className={`option-label ${optionClass}`}>
+                                        <input
+                                            type="radio"
+                                            name={`question-${questionIndex}`}
+                                            onChange={() => handleAnswerChange(questionIndex, altIndex)}
+                                            checked={selectedAnswers[questionIndex] === altIndex}
+                                            disabled={score !== null} // Desabilitar após envio
+                                        />
+                                        {alt}
+                                    </label>
+                                );
+                            })}
+                        </div>
+                    </div>                
                     ))
                 ) : (
-                    <p>Não há perguntas disponíveis para este quiz.</p>
-                )
-            ) : (
+                <p>Não há perguntas disponíveis para este quiz.</p>
+                )) : (
                 <p>Carregando...</p>
             )}
 
             {/* Botão para confirmar as respostas */}
-            {quiz && quiz.questions && quiz.questions.length > 0 && (
-                <button
-                    onClick={handleConfirmAnswers}
-                    className='confirm-button'
-                    disabled={score !== null} // Desabilita após submissão
-                >
-                    Confirmar
-                </button>
-            )}
+            <button
+            onClick={handleConfirmAnswers}
+            className='confirm-button'
+            disabled={score !== null} // Desabilita após submissão
+        >
+            Confirmar
+        </button>
 
             {/* Mostra o total de acertos após a confirmação */}
-            {score !== null && quiz && quiz.questions && (
+            {score !== null && (
                 <p className='score-text'>
                     Você acertou {score} de {quiz.questions.length} questões.
                 </p>
