@@ -20,7 +20,7 @@ app.use('/api/atlas', Postagem_routes);      // Rotas específicas para postagen
 app.use('/api/quiz', Quiz_routes);          // Rotas específicas para quizzes
 //app.use(cors({ origin: 'https://frontend-production-4d9f.up.railway.app' })); //Essa configuração permitirá que qualquer origem acesse a API. Para limitar a origens específicas
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
