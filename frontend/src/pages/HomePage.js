@@ -68,7 +68,7 @@ const HomePage = () => {
                             </p>
                             <button
                                 className="quiz-button"
-                                onClick={() => window.location.href = `/quiz/1`}
+                                onClick={() => window.location.href = `api/quiz/1`}
                             >
                                 Quiz
                             </button>
