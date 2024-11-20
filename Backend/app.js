@@ -8,7 +8,7 @@ const Quiz_routes = require('./routes/Quiz_routes');
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'URL_DO_FRONTEND_NO_RAILWAY',
+    origin: 'https://frontend-production-4d9f.up.railway.app' // Altere para a URL do frontend
   }));
 app.use(express.json());
 app.use('/public', express.static('public'));
@@ -18,7 +18,7 @@ app.use('/api/atlas', Atlas_routes);        // Rotas principais do atlas
 app.use('/api/atlas', Categoria_routes);     // Rotas específicas para categorias
 app.use('/api/atlas', Postagem_routes);      // Rotas específicas para postagens
 app.use('/api/quiz', Quiz_routes);          // Rotas específicas para quizzes
-app.use(cors({ origin: 'https://frontend-production-4d9f.up.railway.app' })); //Essa configuração permitirá que qualquer origem acesse a API. Para limitar a origens específicas
+//app.use(cors({ origin: 'https://frontend-production-4d9f.up.railway.app' })); //Essa configuração permitirá que qualquer origem acesse a API. Para limitar a origens específicas
 
 const PORT = 3000;
 app.listen(PORT, () => {
