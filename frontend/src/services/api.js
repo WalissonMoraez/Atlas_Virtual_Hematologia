@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Defina a URL base corretamente
-const BASE_URL = 'https://backend-production-47be.up.railway.app/api/atlas'; // Substitua pela URL do seu backend, se necessário
+const BASE_URL = 'https://backend-production-47be.up.railway.app'; // Substitua pela URL do seu backend, se necessário
 
 // Crie uma instância do axios com a URL base
 const api = axios.create({
@@ -11,7 +11,7 @@ const api = axios.create({
 // Função para buscar categorias
 export const getCategories = async () => {
     try {
-        const response = await api.get('/categorias'); // Utilize a instância `api`
+        const response = await api.get('/api/atlas/categorias'); // Utilize a instância `api`
         return response.data;
     } catch (error) {
         console.error("Erro ao buscar categorias:", error);
@@ -22,7 +22,7 @@ export const getCategories = async () => {
 // Função para obter uma postagem específica
 export const getPostDetails = async (categoriaId, postId) => {
     try {
-        const response = await api.get(`/categorias/${categoriaId}/posts/${postId}`);
+        const response = await api.get(`/api/atlas/categorias/${categoriaId}/posts/${postId}`);
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar detalhes da postagem:', error);
@@ -33,7 +33,7 @@ export const getPostDetails = async (categoriaId, postId) => {
 // Função para buscar um quiz específico
 export const getQuiz = async (quizId) => {
     try {
-        const response = await axios.get(`https://backend-production-47be.up.railway.app/api/quiz/${quizId}`);
+        const response = await axios.get(`/api/quiz/${quizId}`);
         return response.data;
     } catch (error) {
         console.error("Erro ao buscar o quiz:", error); // Adicione esse console para verificar o erro específico
@@ -44,7 +44,7 @@ export const getQuiz = async (quizId) => {
 // Função para buscar detalhes de um quiz com base na categoria e postagem
 export const getQuizDetails = async (categoriaId, postId) => {
     try {
-        const response = await api.get(`/categorias/${categoriaId}/posts/${postId}/quiz`);
+        const response = await api.get(`/api/atlas/categorias/${categoriaId}/posts/${postId}/quiz`);
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar detalhes do quiz:', error);
@@ -55,7 +55,7 @@ export const getQuizDetails = async (categoriaId, postId) => {
 // Função para buscar detalhes de uma categoria
 export const getCategoryDetails = async (categoryId) => {
     try {
-        const response = await api.get(`/categorias/${categoryId}`); // Utilize a instância `api`
+        const response = await api.get(`/api/atlas/categorias/${categoryId}`); // Utilize a instância `api`
         return response.data;
     } catch (error) {
         console.error("Erro ao buscar detalhes da categoria:", error);
