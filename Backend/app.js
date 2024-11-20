@@ -8,10 +8,12 @@ const Quiz_routes = require('./routes/Quiz_routes');
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'https://frontend-production-4d9f.up.railway.app', // Adicione o domínio do frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permite métodos que serão usados pelo seu frontend
-    credentials: true // Se precisar lidar com cookies ou sessões, esta opção é importante
+    origin: process.env.CORS_ORIGIN,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
 }));
+
+
 app.use(express.json());
 app.use('/public', express.static('public'));
 
