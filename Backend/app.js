@@ -7,7 +7,9 @@ const Postagem_routes = require('./routes/Postagem_routes');
 const Quiz_routes = require('./routes/Quiz_routes');
 const cors = require('cors');
 
-app.use(cors());
+app.use(cors({
+    origin: 'URL_DO_FRONTEND_NO_RAILWAY',
+  }));
 app.use(express.json());
 app.use('/public', express.static('public'));
 

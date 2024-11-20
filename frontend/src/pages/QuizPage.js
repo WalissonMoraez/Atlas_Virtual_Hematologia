@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getQuizDetails, getPostDetails, getQuiz  } from '../services/api';
+//import { getQuizDetails, getPostDetails} from '../services/api';
+import { getQuiz } from '../services/api';
 import Footer from '../components/Footer';
 import Navbar2 from '../components/Navbar2';
 import '../App.css'; 
@@ -14,7 +15,7 @@ const QuizPage = () => {
     const [score, setScore] = useState(null);
 
 
-{/*
+/*
     // Carrega os detalhes do quiz na postagem, trabalho futuro!!!
     useEffect(() => {
         const fetchQuizDetails = async () => {
@@ -40,7 +41,7 @@ const QuizPage = () => {
         };
         fetchPostDetails();
     }, [categoriaId, postId]);
-*/}
+*/
 
     // Carrega os detalhes do quiz
     useEffect(() => {

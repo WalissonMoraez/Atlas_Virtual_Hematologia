@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Defina a URL base corretamente
-const BASE_URL = 'http://localhost:3000/api/atlas'; // Substitua pela URL do seu backend, se necessário
+const BASE_URL = 'backend-production-47be.up.railway.app'; // Substitua pela URL do seu backend, se necessário
 
 // Crie uma instância do axios com a URL base
 const api = axios.create({
