@@ -45,7 +45,6 @@ const QuizPage = () => {
 
     // Carrega os detalhes do quiz
     useEffect(() => {
-        console.log("quizId:", quizId); // Adicione este console.log para verificar o valor do quizId
         const fetchQuiz = async () => {
             if (quizId) {
                 try {
@@ -73,13 +72,15 @@ const QuizPage = () => {
 
     // Confirma as respostas e calcula o total de acertos
     const handleConfirmAnswers = () => {
-        let correctAnswers = 0;
-        quiz.questions.forEach((question, index) => {
-            if (selectedAnswers[index] === question.idCorrect) {
-                correctAnswers++;
-            }
-        });
-        setScore(correctAnswers);
+        if (quiz && quiz.questions) {
+            let correctAnswers = 0;
+            quiz.questions.forEach((question, index) => {
+                if (selectedAnswers[index] === question.idCorrect) {
+                    correctAnswers++;
+                }
+            });
+            setScore(correctAnswers);
+        }
     };
 
     return (
@@ -129,16 +130,18 @@ const QuizPage = () => {
             )}
 
             {/* Botão para confirmar as respostas */}
-            <button
-            onClick={handleConfirmAnswers}
-            className='confirm-button'
-            disabled={score !== null} // Desabilita após submissão
-        >
-            Confirmar
-        </button>
+            {quiz && quiz.questions && quiz.questions.length > 0 && (
+                <button
+                    onClick={handleConfirmAnswers}
+                    className='confirm-button'
+                    disabled={score !== null} // Desabilita após submissão
+                >
+                    Confirmar
+                </button>
+            )}
 
             {/* Mostra o total de acertos após a confirmação */}
-            {score !== null && (
+            {score !== null && quiz && quiz.questions && (
                 <p className='score-text'>
                     Você acertou {score} de {quiz.questions.length} questões.
                 </p>
