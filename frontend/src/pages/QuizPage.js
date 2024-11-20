@@ -45,12 +45,16 @@ const QuizPage = () => {
 
     // Carrega os detalhes do quiz
     useEffect(() => {
-        console.log("quizId:", quizId); // Adicione este console.log para verificar o valor
+        console.log("quizId:", quizId); // Adicione este console.log para verificar o valor do quizId
         const fetchQuiz = async () => {
             if (quizId) {
                 try {
                     const quizData = await getQuiz(quizId);
-                    setQuiz(quizData);
+                    if (quizData) {
+                        setQuiz(quizData);
+                    } else {
+                        console.error("Quiz não encontrado.");
+                    }
                 } catch (error) {
                     console.error("Erro ao buscar o quiz:", error);
                 }
@@ -69,69 +73,77 @@ const QuizPage = () => {
 
     // Confirma as respostas e calcula o total de acertos
     const handleConfirmAnswers = () => {
-        let correctAnswers = 0;
-        quiz.questions.forEach((question, index) => {
-            if (selectedAnswers[index] === question.idCorrect) {
-                correctAnswers++;
-            }
-        });
-        setScore(correctAnswers);
+        if (quiz && quiz.questions) {
+            let correctAnswers = 0;
+            quiz.questions.forEach((question, index) => {
+                if (selectedAnswers[index] === question.idCorrect) {
+                    correctAnswers++;
+                }
+            });
+            setScore(correctAnswers);
+        }
     };
 
     return (
-        <div className='quiz-cotainer'>
+        <div className='quiz-container'>
             {/* Header com Navbar e Título */}
             <Navbar2 title="Quiz" />
 
             <h1 className='quiz-title'>Teste seu conhecimento</h1>
-            {quiz ? (
-                quiz.questions.map((question, questionIndex) => (
-                    <div key={`question-${questionIndex}`} className="question-card">
-                    <h2 className='question-title'>Questão {questionIndex + 1}</h2>
-                    <p className='question-text'>{question.text}</p>
-                    <div className="options-container">
-                        {question.alternative.map((alt, altIndex) => {
-                            let optionClass = ""; // Classe dinâmica para o estado da resposta
-                
-                            if (score !== null) { // Após submissão
-                                if (altIndex === question.idCorrect) {
-                                    optionClass = "correct"; // Resposta correta
-                                } else if (selectedAnswers[questionIndex] === altIndex) {
-                                    optionClass = "incorrect"; // Resposta incorreta
-                                }
-                            }
-                
-                            return (
-                                <label key={`alt-${questionIndex}-${altIndex}`} className={`option-label ${optionClass}`}>
-                                    <input
-                                        type="radio"
-                                        name={`question-${questionIndex}`}
-                                        onChange={() => handleAnswerChange(questionIndex, altIndex)}
-                                        checked={selectedAnswers[questionIndex] === altIndex}
-                                        disabled={score !== null} // Desabilitar após envio
-                                    />
-                                    {alt}
-                                </label>
-                            );
-                        })}
-                    </div>
-                </div>                
-                ))
+            {quiz && quiz.questions ? (
+                quiz.questions.length > 0 ? (
+                    quiz.questions.map((question, questionIndex) => (
+                        <div key={`question-${questionIndex}`} className="question-card">
+                            <h2 className='question-title'>Questão {questionIndex + 1}</h2>
+                            <p className='question-text'>{question.text}</p>
+                            <div className="options-container">
+                                {question.alternative.map((alt, altIndex) => {
+                                    let optionClass = ""; // Classe dinâmica para o estado da resposta
+
+                                    if (score !== null) { // Após submissão
+                                        if (altIndex === question.idCorrect) {
+                                            optionClass = "correct"; // Resposta correta
+                                        } else if (selectedAnswers[questionIndex] === altIndex) {
+                                            optionClass = "incorrect"; // Resposta incorreta
+                                        }
+                                    }
+
+                                    return (
+                                        <label key={`alt-${questionIndex}-${altIndex}`} className={`option-label ${optionClass}`}>
+                                            <input
+                                                type="radio"
+                                                name={`question-${questionIndex}`}
+                                                onChange={() => handleAnswerChange(questionIndex, altIndex)}
+                                                checked={selectedAnswers[questionIndex] === altIndex}
+                                                disabled={score !== null} // Desabilitar após envio
+                                            />
+                                            {alt}
+                                        </label>
+                                    );
+                                })}
+                            </div>
+                        </div>                
+                    ))
+                ) : (
+                    <p>Não há perguntas disponíveis para este quiz.</p>
+                )
             ) : (
                 <p>Carregando...</p>
             )}
 
             {/* Botão para confirmar as respostas */}
-            <button
-            onClick={handleConfirmAnswers}
-            className='confirm-button'
-            disabled={score !== null} // Desabilita após submissão
-        >
-            Confirmar
-        </button>
+            {quiz && quiz.questions && quiz.questions.length > 0 && (
+                <button
+                    onClick={handleConfirmAnswers}
+                    className='confirm-button'
+                    disabled={score !== null} // Desabilita após submissão
+                >
+                    Confirmar
+                </button>
+            )}
 
             {/* Mostra o total de acertos após a confirmação */}
-            {score !== null && (
+            {score !== null && quiz && quiz.questions && (
                 <p className='score-text'>
                     Você acertou {score} de {quiz.questions.length} questões.
                 </p>
