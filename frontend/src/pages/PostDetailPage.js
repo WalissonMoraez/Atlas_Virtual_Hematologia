@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../../config'
+import { BASE_URL } from '../config'
 import Navbar2 from '../components/Navbar2';
 import Footer from '../components/Footer';
 import { getPostDetails } from '../services/api';
@@ -47,7 +47,7 @@ const PostDetailPage = () => {
                         <div className="image-selector-container">
                             {/* Imagem principal */}
                             <img
-                                src={`${BASE_URL}${post.images[currentImageIndex]}`}
+                                src={`${post.images[currentImageIndex]}`}
                                 alt="Imagem da Postagem"
                                 className="post-image"
                             />
