@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../config'
 import Navbar2 from '../components/Navbar2';
 import Footer from '../components/Footer';
 import { getPostDetails } from '../services/api';
