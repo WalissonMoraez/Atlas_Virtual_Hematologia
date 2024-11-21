@@ -46,7 +46,7 @@ const PostDetailPage = () => {
                         <div className="image-selector-container">
                             {/* Imagem principal */}
                             <img
-                                src={`${post.images[currentImageIndex]}`}
+                                src={`https://backend-production-47be.up.railway.app${post.images[currentImageIndex]}`}
                                 alt="Imagem da Postagem"
                                 className="post-image"
                             />
