@@ -44,8 +44,10 @@ const HomePage = () => {
                 <div className="categories-section">
                     <h2>Estude as células do sangue</h2>
                     <p>
-                        As células do sangue é importante para entender como o corpo funciona e identificar problemas de saúde. O sangue transporta oxigênio, nutrientes e ajuda a combater doenças. Analisar as células sanguíneas ajuda a diagnosticar condições como anemias e infecções, além de contribuir para tratamentos que melhoram a qualidade de vida.
-                    </p>
+                    A ciência que estuda o sangue e seus constituintes é chamada de Hematologia. A produção das células sanguíneas ocorre na medula óssea e entre suas funções, as células sanguíneas realizam o transporte de oxigênio, nutrientes e produtos metabólitos, participa do processo de hemostasia, defesa do organismo e controle da temperatura corpórea. O estudo da morfologia das células do sangue permite identificar alterações que podem estar associadas a diversas condições de saúde, como anemias, infeções, leucemias e outras doenças hematológicas.
+ 
+
+                    <br /><br />O sangue é composto por uma parcela líquida, plasma, e por componentes celulares divididos em três grupos básicos: os eritrócitos (hemácias), os leucócitos (células brancas) e trombócitos (plaquetas).                    </p>
                     <div className="categories-grid">
                         {Array.isArray(categories) && categories.length > 0 ? (
                             categories.map(category => (
