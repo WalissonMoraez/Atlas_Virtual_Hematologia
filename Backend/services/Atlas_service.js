@@ -105,7 +105,7 @@ initializeData() {
     '/public/images/pl/plaqueta1.png'
   ], 
     'Plaquetas', 'Plaquetas são fragmentações derivadas do citoplasma de megacariócitos na medula óssea, sendo que cada megacariócito origina em média 3000 plaquetas. As plaquetas medem cerca de 1 a 3 µm de diâmetro e vivem, em média, 10 dias na circulação sanguínea. Elas apresentam forma discóide, sem núcleo e no citoplasma há a presença de mitocôndrias,  numerosos grânulos com diferentes densidades eletrônicas e glicogênio, servindo como fonte de energia para as plaquetas. Por fim, a função das plaquetas é realizar a manutenção da integridade dos endotélios vasculares, com seu papel na hemostasia primária.',null, pl.id, 
-    ['Plaqueta']);
+    ['Plaquetas']);
 
   gv.addPost(gv1);
     gb.addPost(gb1);
