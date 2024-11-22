@@ -52,10 +52,10 @@ initializeData() {
       'Linfócito']);
 
   const gb1 = new Postagem_models(Date.now()+20, [
-    '/public/images/gb/hemacia0.png',
-    '/public/images/gb/hemacia1.png',
-    '/public/images/gb/hemacia0.png'],
-     'Neutrófilo Segmentado', 'O neutrófilo segmentado é caracterizado por ser uma célula com um núcleo multilobulado, geralmente com 2 a 4 lóbulos, contendo cromatina púrpura escura e densa. Esses lóbulos são conectados por um delicado filamento de cromatina, muitas vezes imperceptível na microscopia convencional. O citoplasma é rico, com uma coloração levemente rosada e apresenta uma fina granulação, que pode conferir ao citoplasma uma aparência de vidro fosco.', null, gb.id, ['Crenada','Suiif']);
+    '/public/images/gb/neutrofilo_segmentado/segmentado0.png',
+    '/public/images/gb/neutrofilo_segmentado/segmentado1.png'],
+     'Neutrófilo Segmentado', 'O neutrófilo segmentado é caracterizado por ser uma célula com um núcleo multilobulado, geralmente com 2 a 4 lóbulos, contendo cromatina púrpura escura e densa. Esses lóbulos são conectados por um delicado filamento de cromatina, muitas vezes imperceptível na microscopia convencional. O citoplasma é rico, com uma coloração levemente rosada e apresenta uma fina granulação, que pode conferir ao citoplasma uma aparência de vidro fosco.', null, gb.id, [
+      'Neutrófilo Segmentado']);
 
   const gb2 = new Postagem_models(Date.now()+21, [
     '/public/images/gb/neutrofilo_bastonete/bastonete0.png',
@@ -86,10 +86,11 @@ initializeData() {
       'Plaqueta']);
 
   const gb5 = new Postagem_models(Date.now()+24, [
-    '/public/images/gb/hemacia0.png',
-    '/public/images/gb/hemacia1.png',
+    '/public/images/gb/monocitos/monocito0.png',
+    '/public/images/gb/monocitos/monocito1.png',
     '/public/images/gb/hemacia0.png'], 
-    'Monócitos', 'As células apresentam um tamanho entre 12 e 15 µm de diâmetro em relação à sua morfologia. O citoplasma é abundante e exibe uma coloração cinza ou azul-claro acinzentada, com uma fina granulação, dando-lhe uma aparência de vidro fosco devido a essa granulação, assemelhando-se a uma fina poeira. É comum encontrar vacúolos citoplasmáticos nas células. O núcleo, geralmente grande, oval ou indentado, está posicionado centralmente na célula, enquanto o nucléolo não é facilmente visível em colorações convencionais. A relação nucleocitoplasmática é baixa. A cromatina é delicada, predominantemente frouxa, com filamentos estreitos conectando pequenas áreas de cromatina mais densa.', null, gb.id, ['Crenada','Suiif']);
+    'Monócitos', 'As células apresentam um tamanho entre 12 e 15 µm de diâmetro em relação à sua morfologia. O citoplasma é abundante e exibe uma coloração cinza ou azul-claro acinzentada, com uma fina granulação, dando-lhe uma aparência de vidro fosco devido a essa granulação, assemelhando-se a uma fina poeira. É comum encontrar vacúolos citoplasmáticos nas células. O núcleo, geralmente grande, oval ou indentado, está posicionado centralmente na célula, enquanto o nucléolo não é facilmente visível em colorações convencionais. A relação nucleocitoplasmática é baixa. A cromatina é delicada, predominantemente frouxa, com filamentos estreitos conectando pequenas áreas de cromatina mais densa.', null, gb.id, [
+      'Monócitos']);
 
   const gb6 = new Postagem_models(Date.now()+25, [
     '/public/images/gb/linfocitos/linfocito0.png',
@@ -101,14 +102,10 @@ initializeData() {
 
   const pl1 = new Postagem_models(Date.now()+26, [
     '/public/images/pl/plaqueta0.png',
-    '/public/images/pl/plaqueta1.png',
-    '/public/images/pl/basofilo.png',
-    '/public/images/pl/hemacia.png'
+    '/public/images/pl/plaqueta1.png'
   ], 
     'Plaquetas', 'Plaquetas são fragmentações derivadas do citoplasma de megacariócitos na medula óssea, sendo que cada megacariócito origina em média 3000 plaquetas. As plaquetas medem cerca de 1 a 3 µm de diâmetro e vivem, em média, 10 dias na circulação sanguínea. Elas apresentam forma discóide, sem núcleo e no citoplasma há a presença de mitocôndrias,  numerosos grânulos com diferentes densidades eletrônicas e glicogênio, servindo como fonte de energia para as plaquetas. Por fim, a função das plaquetas é realizar a manutenção da integridade dos endotélios vasculares, com seu papel na hemostasia primária.',null, pl.id, 
-    ['Plaqueta',
-    'Basófilo',
-    'Hemácia']);
+    ['Plaqueta']);
 
   gv.addPost(gv1);
     gb.addPost(gb1);
