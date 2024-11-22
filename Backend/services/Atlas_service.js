@@ -58,28 +58,28 @@ initializeData() {
      'Neutrófilo Segmentado', 'O neutrófilo segmentado é caracterizado por ser uma célula com um núcleo multilobulado, geralmente com 2 a 4 lóbulos, contendo cromatina púrpura escura e densa. Esses lóbulos são conectados por um delicado filamento de cromatina, muitas vezes imperceptível na microscopia convencional. O citoplasma é rico, com uma coloração levemente rosada e apresenta uma fina granulação, que pode conferir ao citoplasma uma aparência de vidro fosco.', null, gb.id, ['Crenada','Suiif']);
 
   const gb2 = new Postagem_models(Date.now()+21, [
-    '/public/images/gb/bastonete0.png',
-    '/public/images/gb/bastonete1.png',
-    '/public/images/gb/linfocito0.png'],
+    '/public/images/gb/neutrofilo_bastonete/bastonete0.png',
+    '/public/images/gb/neutrofilo_bastonete/bastonete1.png',
+    '/public/images/gb/neutrofilo_bastonete/linfocito0.png'],
      'Neutrófilo Bastonete', 'Os neutrófilos em estágio bastonete estão presentes em escassa quantidade na circulação sanguínea periférica sob condições fisiológicas normais. Eles se distinguem de formas celulares mais imaturas pela maior condensação da cromatina e pela modificação da morfologia nuclear, que adota a configuração de um bastão ou meia lua, resultando em um diâmetro praticamente uniforme ao longo de sua extensão.', null, gb.id, [
       'Bastonete',
       'Linfócito']);
 
   const gb3 = new Postagem_models(Date.now()+22, [
-    '/public/images/gb/eosinofilo0.png',
-    '/public/images/gb/eosinofilo1.png',
-    '/public/images/gb/linfocito.png',
-    '/public/images/gb/plaqueta.png'], 
+    '/public/images/gb/eosinofilo/eosinofilo0.png',
+    '/public/images/gb/eosinofilo/eosinofilo1.png',
+    '/public/images/gb/eosinofilo/linfocito.png',
+    '/public/images/gb/eosinofilo/plaqueta.png'], 
     'Eosinófilo', 'Os eosinófilos exibem um diâmetro médio de cerca de 8 µm. O citoplasma dessas células é notavelmente abundante e caracterizado pela presença de aproximadamente vinte grânulos eosinofílicos por célula. O núcleo é bilobulado e apresenta cromatina densa, que é intensamente corada em eosina. Apresentam granulação grosseira, formada por grânulos primários e os grânulos secundários que se coram intensamente de cor avermelhada/alaranjada.', null, gb.id, [
       'Eosinófilo',
       'Linfócito',
       'Plaqueta']);
 
   const gb4 = new Postagem_models(Date.now()+23, [
-    '/public/images/gb/basofilo0.png',
-    '/public/images/gb/basofilo1.png',
-    '/public/images/gb/hemacia.png',
-    '/public/images/gb/plaqueta.png'], 
+    '/public/images/gb/basofilos/basofilo0.png',
+    '/public/images/gb/basofilos/basofilo1.png',
+    '/public/images/gb/basofilos/hemacia.png',
+    '/public/images/gb/basofilos/plaqueta.png'], 
     'Basófilos', 'Os basófilos são reconhecidos pela presença de grânulos citoplasmáticos que se coram com corantes básicos, adquirindo uma tonalidade purpúrea escura nas técnicas de coloração convencionais. Além da distinção proporcionada pelos grânulos basófilos, essa subpopulação celular é relativamente grande, apresentando um diâmetro entre 10 e 15 µm. O citoplasma é abundante, com uma coloração rosada e uma alta concentração de grânulos basófilos. Além disso, os basófilos possuem estruturas citoplasmáticas conhecidas como corpos lipídicos, que são ricos em ácido aracdônico e apresentam uma densidade eletrônica elevada. O núcleo é multilobulado e exibe uma cromatina densa.', null, gb.id, [
       'Basófilo',
       'Hemácia',
@@ -92,9 +92,9 @@ initializeData() {
     'Monócitos', 'As células apresentam um tamanho entre 12 e 15 µm de diâmetro em relação à sua morfologia. O citoplasma é abundante e exibe uma coloração cinza ou azul-claro acinzentada, com uma fina granulação, dando-lhe uma aparência de vidro fosco devido a essa granulação, assemelhando-se a uma fina poeira. É comum encontrar vacúolos citoplasmáticos nas células. O núcleo, geralmente grande, oval ou indentado, está posicionado centralmente na célula, enquanto o nucléolo não é facilmente visível em colorações convencionais. A relação nucleocitoplasmática é baixa. A cromatina é delicada, predominantemente frouxa, com filamentos estreitos conectando pequenas áreas de cromatina mais densa.', null, gb.id, ['Crenada','Suiif']);
 
   const gb6 = new Postagem_models(Date.now()+25, [
-    '/public/images/gb/linfocito0.png',
-    '/public/images/gb/linfocito1.png',
-    '/public/images/gb/hemacia.png'], 
+    '/public/images/gb/linfocitos/linfocito0.png',
+    '/public/images/gb/linfocitos/linfocito1.png',
+    '/public/images/gb/linfocitos/hemacia.png'], 
     'Linfócitos', 'São células pequenas (com dimensões entre 6 e 15 µm), regulares e arredondadas. Apresentam uma relação nucleocitoplasmática elevada, com o núcleo ocupando aproximadamente 90% da área da célula. O citoplasma é escasso e basófilo, enquanto o núcleo é regular e esférico, exibindo uma tonalidade azul-arroxeada e uma cromatina sem nucléolo evidente.', null, gb.id, [
       'Linfócito',
       'Hemácia']);
